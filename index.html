@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Gallant Builders & Developers — Master Portfolio & Project Listings</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -83,15 +83,7 @@
     .divider-bronze { height: 1px; background: linear-gradient(90deg, transparent, rgba(184, 133, 62, .3), transparent) }
     .grid-overlay { background-image: linear-gradient(rgba(184, 133, 62, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(184, 133, 62, .03) 1px, transparent 1px); background-size: 80px 80px }
     .dot-pattern { background-image: radial-gradient(rgba(184, 133, 62, .12) 1px, transparent 1px); background-size: 24px 24px }
-
-    /* ===== ROW NUMBER BADGE ===== */
-    .row-num-badge {
-      width: 50px; height: 50px; border-radius: 50%; flex-shrink: 0; margin-right: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 1.25rem;
-      color: #7c5424; background: #fefdfb; border: 1.5px solid rgba(184, 133, 62, .45);
-      box-shadow: 0 2px 10px rgba(184, 133, 62, .15);
-    }
+    .row-num-badge { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9999px; background: rgba(184, 133, 62, 0.15); color: #7c5424; font-weight: 600; font-size: 0.875rem; margin-right: 0.75rem; }
 
     /* ===== PASSPORT-STYLE EQUAL MESSAGE SECTIONS ===== */
     .msg-layout-row {
@@ -187,10 +179,10 @@
     }
 
     .gallant-surface-emblem {
-      width: 122px;
-      height: 122px;
+      width: clamp(4.5rem, 14vw, 7.625rem);
+      height: clamp(4.5rem, 14vw, 7.625rem);
       border-radius: 50%;
-      margin: 0 auto 1.75rem;
+      margin: 0 auto 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -201,8 +193,8 @@
     }
 
     .gallant-surface-emblem img {
-      width: 70px;
-      height: 70px;
+      width: clamp(2.75rem, 8vw, 4.375rem);
+      height: clamp(2.75rem, 8vw, 4.375rem);
       object-fit: contain;
       opacity: 0.92;
       transition: opacity 0.4s ease;
@@ -221,7 +213,6 @@
     .hero-stagger-2 { opacity: 0; animation: heroFadeSlideUp 1.2s cubic-bezier(.22, 1, .36, 1) forwards; animation-delay: 0.25s; }
 
     /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px) } 100% { opacity: 1; transform: translateY(0) } }
     @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
     @keyframes heroZoom { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
     @keyframes titlePulseSlide {
@@ -258,43 +249,208 @@
     @media(min-width:1024px) {
       .lg\:grid-cols-12 { grid-template-columns: repeat(12, 1fr) }
       .lg\:col-span-6 { grid-column: span 6 }
+      .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr) }
     }
 
     .icon { width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .icon-sm { width: 15px; height: 15px }
     .icon-md { width: 18px; height: 18px }
     .icon-lg { width: 22px; height: 22px }
+
+    /* ===== FLUID HEADING SCALE ===== */
+    .heading-xl { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.15; }
+    .heading-md { font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.25; }
+    .heading-card { font-size: clamp(1.55rem, 2.8vw, 2.15rem); line-height: 1.25; }
+
+    /* ===== HERO BACKGROUND IMAGE ===== */
+    .hero-bg-img { object-position: center center; }
+
+    @media (max-width: 640px) {
+      .hero-bg-img.hero-zoom-animation { animation: heroZoomMobile 25s ease-in-out infinite; }
+    }
+    @keyframes heroZoomMobile { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+    /* ===== MISSING BASE UTILITIES ===== */
+    .text-base { font-size: 1rem }
+    .flex-wrap { flex-wrap: wrap }
+    .flex-col { flex-direction: column }
+    .flex-col.flex { display: flex; }
+
+    /* ===== RESPONSIVE TEXT-SIZE UTILITIES (sm: breakpoint, min-width 640px) ===== */
+    @media (min-width: 640px) {
+      .sm\:text-3xl { font-size: 2.25rem; }
+      .sm\:text-4xl { font-size: clamp(2.5rem, 4vw, 3rem); }
+      .sm\:text-5xl { font-size: clamp(2.75rem, 4.5vw, 3.75rem); }
+      .sm\:text-6xl { font-size: clamp(3.1rem, 5.5vw, 4.5rem); }
+      .sm\:flex-row { flex-direction: row; }
+    }
+
+    /* ======================================================================
+       RESPONSIVE / MOBILE NAVIGATION
+       ====================================================================== */
+
+    #nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(205,163,104,0.35);
+      flex-shrink: 0;
+      color: #fefdfb;
+      transition: background .3s ease, transform .3s ease, color .3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #nav-toggle:hover { background: rgba(255,255,255,0.16); }
+    #nav-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; }
+    #nav-toggle .icon-close { display: none; }
+    #nav-toggle.open .icon-menu { display: none; }
+    #nav-toggle.open .icon-close { display: block; }
+
+    #nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(8,6,5,0.55);
+      z-index: 150;
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+    #nav-overlay.open { display: block; opacity: 1; }
+
+    @media (max-width: 899px) {
+      #nav-toggle { display: flex; }
+
+      #nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(82vw, 320px);
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(16,12,9,0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: flex-start !important;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 6.5rem 2rem 2.5rem;
+        padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
+        padding-top: calc(6.5rem + env(safe-area-inset-top, 0px));
+        transition: right .4s cubic-bezier(.22,1,.36,1);
+        z-index: 200;
+        overflow-y: auto;
+        box-shadow: -10px 0 40px rgba(0,0,0,.35);
+      }
+      #nav-links.open { right: 0; }
+      #nav-links > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.25rem !important;
+        width: 100%;
+        margin-right: 0 !important;
+      }
+      #nav-links a.nav-link-item {
+        width: 100%;
+        padding: 15px 4px !important;
+        font-size: 1.05rem !important;
+        color: #fefdfb !important;
+        text-shadow: none !important;
+        border-bottom: 1px solid rgba(205,163,104,0.15);
+      }
+      #nav-cta-btn {
+        width: 100%;
+        margin-top: 1.75rem;
+        text-align: center;
+      }
+      #nav-logo { gap: 0.65rem !important; }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      #home { padding-top: 9rem !important; padding-bottom: 6rem !important; }
+      #about, #properties, #contact { padding-top: 6rem !important; padding-bottom: 6rem !important; }
+      #view-leadership > main, #view-detail-park > main, #view-detail-homes > main {
+        padding-top: 3rem !important; padding-bottom: 5rem !important;
+      }
+      .project-card { padding: 3.5rem 2rem !important; }
+    }
+
+    @media (max-width: 640px) {
+      .px-6 { padding-left: 1.1rem; padding-right: 1.1rem; }
+
+      #home { padding-top: 6.25rem !important; padding-bottom: 3rem !important; min-height: 78vh !important; min-height: 78dvh !important; }
+      #about, #properties, #contact { padding-top: 4.25rem !important; padding-bottom: 4.25rem !important; }
+      #view-leadership > main, #view-detail-park > main, #view-detail-homes > main {
+        padding-top: 2.5rem !important; padding-bottom: 3.5rem !important;
+      }
+
+      .msg-layout-row { padding: 1.75rem 1.25rem; gap: 1.5rem; }
+      .passport-photo-box { width: 100%; max-width: 230px; height: 260px; }
+
+      .project-card { padding: 2.75rem 1.25rem !important; }
+      .project-card h3 { font-size: clamp(2rem, 6vw, 2.3rem) !important; }
+
+      .animated-page-title { font-size: clamp(2.1rem, 11vw, 3.25rem) !important; }
+      .gallant-surface-emblem { margin-bottom: 1.25rem !important; }
+
+      #nav-logo > div:first-child { width: 46px !important; height: 46px !important; }
+      #nav-brand-title { font-size: 1rem !important; }
+
+      .btn-bronze, .btn-outline { padding: 13px 24px !important; font-size: 0.85rem !important; }
+
+      h1, h2, h3 { word-break: break-word; }
+
+      .image-3d img { height: 280px !important; }
+
+      .row-num-badge { width: 32px; height: 32px; font-size: 0.8rem; }
+    }
+
+    @media (max-width: 380px) {
+      .passport-photo-box { max-width: 200px; height: 230px; }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- ===== TRANSPARENT MERGED HERO NAVBAR WITH SHIFTED RIGHT NAVIGATION LINKS & CONTACT US CTA ===== -->
+  <!-- ===== TRANSPARENT MERGED HERO NAVBAR ===== -->
   <nav id="navbar"
     style="position:fixed;top:0;left:0;right:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid transparent;z-index:100;transition:all 0.45s cubic-bezier(0.22, 1, 0.36, 1);padding:1.15rem 0;">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" id="nav-inner" style="transition:all 0.4s ease;">
-      <a href="#home" onclick="switchView('main'); return false;" class="flex items-center gap-3.5" id="nav-logo" style="transition:transform 0.3s ease;"
+      <a href="#home" onclick="navJump('home'); return false;" class="flex items-center gap-3.5" id="nav-logo" style="transition:transform 0.3s ease;"
         onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
         <div style="width:62px;height:62px;display:flex;align-items:center;justify-content:center;">
           <img src="gallant-logo-hero.png" alt="Gallant Builders Logo" style="max-height:100%;width:auto;" />
         </div>
         <div>
-          <div class="text-xl font-bold font-heading" style="color:#fefdfb;line-height:1.15;text-shadow:0 2px 10px rgba(0,0,0,0.85);">Gallant</div>
-          <div class="text-xs uppercase font-medium" style="letter-spacing:.22em;color:#cda368;font-size:10px;text-shadow:0 1px 6px rgba(0,0,0,0.85);margin-top:2px;">Builders &amp; Developers</div>
+          <div class="text-xl font-bold font-heading" id="nav-brand-title" style="color:#fefdfb;line-height:1.15;text-shadow:0 2px 10px rgba(0,0,0,0.85);transition:color .3s;">Gallant</div>
+          <div class="text-xs uppercase font-medium" id="nav-brand-sub" style="letter-spacing:.22em;color:#cda368;font-size:10px;text-shadow:0 1px 6px rgba(0,0,0,0.85);margin-top:2px;">Builders &amp; Developers</div>
         </div>
       </a>
 
-      <!-- SHIFTED RIGHT NAV LINKS + CONTACT US CTA -->
+      <!-- RIGHT NAV LINKS + CONTACT US CTA -->
       <div class="flex items-center gap-2 sm:gap-6 ml-auto" id="nav-links">
         <div class="flex items-center gap-2 sm:gap-5" style="margin-right:0.5rem;">
-          <a href="#home" onclick="switchView('main'); return false;" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);">Home</a>
-          <a href="#properties" onclick="switchView('main'); return false;" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);">Projects</a>
-          <a href="#about" onclick="switchView('main'); return false;" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);">About</a>
+          <a href="#about" onclick="navJump('about'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">About</a>
+          <a href="#" onclick="switchView('leadership'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">Leadership</a>
+          <a href="#properties" onclick="navJump('properties'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">Projects</a>
         </div>
-        <a href="#contact" onclick="switchView('main'); return false;" class="btn-bronze" style="padding:10px 24px;border-radius:9999px;font-size:.9rem;letter-spacing:.025em">contact us</a>
+        <a href="#contact" id="nav-cta-btn" onclick="navJump('contact'); return false;" class="btn-bronze" style="padding:10px 24px;border-radius:9999px;font-size:.9rem;letter-spacing:.025em;cursor:pointer;">contact us</a>
       </div>
+
+      <!-- MOBILE / TABLET HAMBURGER TOGGLE -->
+      <button id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg class="icon-menu" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU BACKDROP -->
+  <div id="nav-overlay" onclick="closeMobileNav()"></div>
 
   <!-- ================= VIEW 1: MAIN LANDING PORTFOLIO ================= -->
   <div id="view-main">
@@ -302,7 +458,7 @@
     <section id="home"
       style="position:relative;padding:12.5rem 0 8.5rem;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#100c09;text-align:center">
       <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-        <img src="gate.jpeg" alt="Contemporary villa at dusk" class="hero-zoom-animation"
+        <img src="gate.jpeg" alt="Contemporary villa at dusk" class="hero-zoom-animation hero-bg-img"
           style="width:100%;height:100%;object-fit:cover;will-change:transform;" />
         <div style="position:absolute;inset:0;background:linear-gradient(to top,#100c09 5%,rgba(16,12,9,.65) 45%,rgba(16,12,9,.45))"></div>
         <div style="position:absolute;inset:0;background:radial-gradient(circle at center,rgba(16,12,9,.35) 0%,rgba(16,12,9,.8) 100%)"></div>
@@ -314,22 +470,20 @@
 
       <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;flex-direction:column;align-items:center">
         
-        <!-- LARGER ONE-LINE TITLE & MATCHING BRONZE GRADIENT PVT LTD -->
         <h1 class="font-heading" style="color:#fefdfb;line-height:1.2;margin-bottom:2.25rem;text-shadow:0 4px 28px rgba(0,0,0,0.88);">
-          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.95rem,3.5vw,2.75rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
+          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.4rem,3.5vw,2.75rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
             Welcome to
           </span>
-          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(2.45rem,5.6vw,4.4rem);font-weight:600;letter-spacing:0.02em;white-space:nowrap;">
+          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.6rem,5.6vw,4.4rem);font-weight:600;letter-spacing:0.02em;">
             Gallant Builders and Developers
           </span>
-          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.6rem,3.4vw,2.65rem);font-weight:600;letter-spacing:0.08em;margin-top:0.45rem;text-shadow:0 2px 14px rgba(205,163,104,0.45);">
+          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.05rem,3.4vw,2.65rem);font-weight:600;letter-spacing:0.08em;margin-top:0.45rem;text-shadow:0 2px 14px rgba(205,163,104,0.45);">
             Pvt Ltd
           </span>
         </h1>
 
-        <!-- ONLY VIEW PROJECT IN THE MID -->
         <div class="hero-stagger-2 flex flex-wrap items-center justify-center gap-4">
-          <a href="#properties" class="btn-bronze"
+          <a href="#properties" onclick="navJump('properties'); return false;" class="btn-bronze"
             style="padding:16px 42px;border-radius:9999px;font-size:.925rem;font-weight:600;">
             <span>View Project</span>
             <svg class="icon icon-sm" style="color:#14110a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -338,14 +492,14 @@
       </div>
     </section>
 
-    <!-- 2. ABOUT SECTION (EXPANDED TO SINGLE-LINE UNCONGESTED TITLE) -->
+    <!-- 2. ABOUT SECTION -->
     <section id="about" style="position:relative;padding:8rem 0;background:#faf7f0;overflow:hidden">
       <div class="dot-pattern" style="position:absolute;top:80px;right:0;width:256px;height:256px;opacity:.5"></div>
       <div class="dot-pattern" style="position:absolute;bottom:80px;left:0;width:192px;height:192px;opacity:.4"></div>
       <div class="max-w-7xl mx-auto px-6 reveal-up">
         <div style="margin-bottom:4rem;text-align:center;">
           <span class="section-label text-xs uppercase font-semibold text-bronze-600 justify-center mb-3">Who We Are</span>
-          <h2 class="font-heading text-ink-900" style="font-size:clamp(2.5rem,4.5vw,4rem);line-height:1.2;white-space:nowrap;">
+          <h2 class="font-heading text-ink-900" style="font-size:clamp(2rem,4.5vw,4rem);line-height:1.2;">
             About <span class="italic text-bronze-gradient">Gallant Builders &amp; Developers</span>
           </h2>
         </div>
@@ -361,9 +515,12 @@
             <p class="text-lg font-light text-ink-600" style="line-height:1.8">
               Gallant Builders &amp; Developers stands at the forefront of modern real estate development, delivering visionary residential and commercial projects that redefine urban living standards.
             </p>
+            <p class="text-lg font-light text-ink-600" style="line-height:1.8">
+              Every master-planned enclave we engineer integrates LDA-compliant statutory clarity, sustainable green infrastructure, and lasting architectural legacy for generations to come.
+            </p>
             <div style="margin-top:1rem">
-              <a href="#properties" class="btn-outline" style="padding:12px 28px;border-radius:9999px;font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;color:#5e401b;border-color:rgba(184,133,62,.45);">
-                <span>View Our Projects</span>
+              <a href="#" onclick="switchView('leadership'); return false;" class="btn-outline" style="padding:12px 28px;border-radius:9999px;font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;color:#5e401b;border-color:rgba(184,133,62,.45);">
+                <span>Leadership</span>
                 <svg class="icon icon-sm"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
@@ -372,147 +529,109 @@
       </div>
     </section>
 
-    <!-- 3. REFERENCE-STYLE EQUAL PORTRAIT & MESSAGE LAYOUT (SINGLE PERFECT HEADING + CHAIRMAN TANWEER A KAZMI, CEO AMJAD SANDHU, LEGAL RAJA SHEHZAD CHANGEZ) -->
-    <section id="leadership" style="position:relative;padding:7rem 0;background:#f3eedd;overflow:hidden">
-      <div class="dot-pattern" style="position:absolute;inset:0;opacity:.25;"></div>
-      <div class="max-w-5xl mx-auto px-6 reveal-up relative z-10">
-        <div style="margin-bottom:4rem;text-align:center;">
-          <h2 class="font-heading text-ink-900" style="font-size:clamp(2.75rem,5.5vw,4rem);line-height:1.1;">
-            Leadership
-          </h2>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:3rem;">
-
-          <!-- CHAIRMAN (Tanweer A Kazmi) -->
-          <div class="msg-layout-row reveal-up">
-            <div class="passport-photo-box">
-              <img src="chairman.jpeg" alt="Chairman Tanweer A Kazmi" />
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-              <h3 class="font-heading text-ink-900 text-3xl sm:text-4xl" style="margin-bottom:1.25rem;">Chairman</h3>
-              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
-                At Gallant Builders &amp; Developers, our philosophy is anchored in unshakeable trust, architectural integrity, and generational equity for every family and investor.
-              </p>
-              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
-                Through visionary master planning at Park Avenue Housing Society, we curate gated sanctuary environments where landscape, security, and urban growth converge.
-              </p>
-              <div style="text-align:right;">
-                <div class="font-heading text-bronze-600 text-2xl">Tanweer A Kazmi</div>
-                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Chairman</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CEO - AMJAD SANDHU -->
-          <div class="msg-layout-row reveal-up">
-            <div class="passport-photo-box">
-              <img src="WhatsApp Image 2026-09-17 at 10.16.15 PM.jpeg" alt="CEO Amjad Sandhu" />
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-              <h3 class="font-heading text-ink-900 text-3xl sm:text-4xl" style="margin-bottom:1.25rem;">CEO</h3>
-              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
-                As Chief Executive Officer, my mandate is strict on-ground engineering discipline, accelerated infrastructure milestones, and zero-compromise site execution.
-              </p>
-              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
-                From wide arterial boulevards to underground electrification and amenity zones, our construction divisions deliver finished realities on schedule.
-              </p>
-              <div style="text-align:right;">
-                <div class="font-heading text-bronze-600 text-2xl">Amjad Sandhu</div>
-                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Chief Executive Officer</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- LEGAL TEAM ADVISOR HEAD (Raja Shehzad Changez) -->
-          <div class="msg-layout-row reveal-up">
-            <div class="passport-photo-box">
-              <img src="WhatsApp Image 2026-09-17 at 10.38.18 PM.jpeg" alt="Legal Raja Shehzad Changez" />
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-              <h3 class="font-heading text-ink-900 text-3xl sm:text-4xl" style="margin-bottom:1.25rem;">Leagal</h3>
-              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
-                Asset protection begins with audited land title clearance, LDA-aligned statutory compliance, and completely transparent allotment documentation.
-              </p>
-              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
-                Our legal advisory desk guarantees that every plot or commercial file issued by Gallant carries verified, dispute-free legal lineage.
-              </p>
-              <div style="text-align:right;">
-                <div class="font-heading text-bronze-600 text-2xl">Raja Shehzad Changez</div>
-                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Legal Advisor Head</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. PROJECT SECTION: COLORED REMAINING SECTION BACKGROUND WITH ISOLATED LIGHT PARK AVENUE CARD -->
+    <!-- 4. PROJECTS SECTION -->
     <section id="properties" style="position:relative;padding:8rem 0;background:linear-gradient(135deg,#e8dfcc 0%,#f0e6d2 50%,#dfd4bc 100%);overflow:hidden">
       <div class="dot-pattern" style="position:absolute;inset:0;opacity:.25;pointer-events:none;"></div>
       <div class="max-w-7xl mx-auto px-6 reveal-up" style="position:relative;z-index:2;">
         
-        <!-- SECTION TITLE: PROJECTS ONLY -->
         <div style="text-align:center;margin-bottom:4rem;">
-          <h2 class="font-heading text-ink-900 text-4xl sm:text-6xl uppercase tracking-wider">Projects</h2>
+          <h2 class="font-heading text-ink-900 heading-xl uppercase tracking-wider">Projects</h2>
         </div>
 
-        <!-- ISOLATED LIGHT PARK AVENUE CARD -->
-        <div class="reveal-up" style="
-          position: relative;
-          overflow: hidden;
-          border-radius: 1.5rem;
-          width: 100%;
-          max-width: 920px;
-          margin: 0 auto;
-          padding: 4.5rem 2.5rem;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background: #fefdfb;
-          border: 1.5px solid rgba(184, 133, 62, 0.35);
-          box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12);
-          transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
-        " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 28px 65px rgba(184, 133, 62, 0.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 20px 50px rgba(30, 24, 19, 0.12)'">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:2.5rem;max-width:860px;margin:0 auto;">
           
-          <div style="position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(205,163,104,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+          <!-- PARK AVENUE CARD -->
+          <div class="reveal-up project-card" style="
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            width: 100%;
+            padding: 4.5rem 3rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fefdfb;
+            border: 1.5px solid rgba(184, 133, 62, 0.35);
+            box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12);
+            transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
+          " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 28px 65px rgba(184, 133, 62, 0.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 20px 50px rgba(30, 24, 19, 0.12)'">
+            
+            <div style="position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(205,163,104,0.18) 0%,transparent 70%);pointer-events:none;"></div>
 
-          <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;margin-bottom:0.75rem;display:inline-block">Flagship Community</span>
-          
-          <h3 class="font-heading text-ink-900" style="font-size:clamp(3rem, 6.5vw, 4.8rem);line-height:1.05;margin-bottom:0.5rem;color:#1f1a11;">
-            PARK <span class="italic text-bronze-gradient">AVENUE</span>
-          </h3>
-          <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mb-6">Housing Society</span>
-          
-          <p class="text-ink-600 font-light" style="max-width:560px;font-size:1.1rem;line-height:1.75;margin-bottom:2.25rem;">
-            This is a project by Gallant Builders &amp; Developers offering master-planned residential plots, commercial storefront inventories, and serene community infrastructure.
-          </p>
+            <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;margin-bottom:0.75rem;display:inline-block">Flagship Community</span>
+            
+            <h3 class="font-heading text-ink-900" style="font-size:clamp(2.3rem, 5.2vw, 4.1rem);line-height:1.05;margin-bottom:0.5rem;color:#1f1a11;">
+              PARK <span class="italic text-bronze-gradient">AVENUE</span>
+            </h3>
+            <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mb-6">Housing Society</span>
+            
+            <p class="text-ink-600 font-light" style="max-width:580px;font-size:1.05rem;line-height:1.75;margin-bottom:2.25rem;">
+              Master-planned residential plots, commercial storefront inventories, and serene community infrastructure by Gallant Builders &amp; Developers.
+            </p>
 
-          <button onclick="switchView('detail'); return false;" class="btn-bronze" style="padding:15px 36px;border-radius:9999px;font-size:.9rem;font-weight:600;">
-            <span>View More</span>
-            <svg class="icon icon-sm" style="color:#14110a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
+            <button onclick="switchView('detail-park'); return false;" class="btn-bronze" style="padding:15px 36px;border-radius:9999px;font-size:.9rem;font-weight:600;">
+              <span>View More</span>
+              <svg class="icon icon-sm" style="color:#14110a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- GALLANT HOMES CARD -->
+          <div class="reveal-up project-card" style="
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            width: 100%;
+            padding: 4.5rem 3rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fefdfb;
+            border: 1.5px solid rgba(184, 133, 62, 0.35);
+            box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12);
+            transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
+          " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 28px 65px rgba(184, 133, 62, 0.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 20px 50px rgba(30, 24, 19, 0.12)'">
+            
+            <div style="position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(205,163,104,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+
+            <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;margin-bottom:0.75rem;display:inline-block">Signature Living</span>
+            
+            <h3 class="font-heading text-ink-900" style="font-size:clamp(2.3rem, 5.2vw, 4.1rem);line-height:1.05;margin-bottom:0.5rem;color:#1f1a11;">
+              GALLANT <span class="italic text-bronze-gradient">HOMES</span>
+            </h3>
+            <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mb-6">Residential Enclave</span>
+            
+            <p class="text-ink-600 font-light" style="max-width:580px;font-size:1.05rem;line-height:1.75;margin-bottom:2.25rem;">
+              Turnkey architectural luxury residences, contemporary interior layouts, and bespoke family sanctuaries built by Gallant Builders &amp; Developers.
+            </p>
+
+            <button onclick="switchView('detail-homes'); return false;" class="btn-bronze" style="padding:15px 36px;border-radius:9999px;font-size:.9rem;font-weight:600;">
+              <span>View More</span>
+              <svg class="icon icon-sm" style="color:#14110a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
         </div>
+
       </div>
     </section>
 
-    <!-- 5. UNIFIED GET IN TOUCH SECTION (SOCIALS FIRST, THEN INTERACTIVE WIDGETS IN ONE SECTION) -->
+    <!-- 5. UNIFIED GET IN TOUCH SECTION -->
     <section id="contact" style="position:relative;padding:8rem 0;background:#f3eedd;overflow:hidden">
       <div class="dot-pattern" style="position:absolute;inset:0;opacity:.25;"></div>
       <div class="max-w-7xl mx-auto px-6 reveal-up relative z-10">
         <div style="margin-bottom:4rem;max-width:672px">
           <span class="section-label text-xs uppercase font-semibold text-bronze-600" style="margin-bottom:1.5rem;display:block">Get in Touch</span>
-          <h2 class="font-heading text-ink-900" style="font-size:clamp(2.75rem,5.5vw,4.25rem);line-height:1.1;margin-bottom:1.5rem">Contact Us</h2>
+          <h2 class="font-heading text-ink-900" style="font-size:clamp(2.4rem,5.5vw,4.25rem);line-height:1.1;margin-bottom:1.5rem">Contact Us</h2>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:3rem;">
-          <!-- Social Channels Placed First -->
           <div style="background:#fefdfb;border-radius:1.5rem;padding:2.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 12px 35px rgba(30,24,19,.05);text-align:center;">
             <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.5rem;">Official Social Presence</span>
-            <h4 class="font-heading text-ink-900 text-2xl sm:text-3xl mb-6">Stay Connected With Gallant</h4>
+            <h4 class="font-heading text-ink-900 heading-md mb-6">Stay Connected With Gallant</h4>
             <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.25rem;">
               <a href="https://www.facebook.com/profile.php?id=61576196166308" target="_blank" rel="noopener" class="social-chip-light">
                 <svg class="icon icon-md text-bronze-600" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -529,15 +648,14 @@
             </div>
           </div>
 
-          <!-- Essential 3 Interactive Location, WhatsApp, & Email Widgets in Single Unified Section -->
           <div id="contact-info" class="grid md:grid-cols-3 gap-6"></div>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- ================= VIEW 2: PARK AVENUE DETAILS, EMBOSSED FLOATING LOGO, WHAT WE OFFER, SIZED PAYMENT PLANS & SOCIETY MASTER MAP AFTER ================= -->
-  <div id="view-detail" class="hidden" style="padding-top:7rem;">
+  <!-- ================= SEPARATE DEDICATED LEADERSHIP PAGE ================= -->
+  <div id="view-leadership" class="hidden" style="padding-top:7rem;">
     <main style="padding:4rem 0 7rem;">
       <div class="max-w-7xl mx-auto px-6" style="margin-bottom:2rem;">
         <button onclick="switchView('main'); return false;" class="inline-flex items-center gap-2 text-sm font-medium text-ink-600 hover:text-bronze-600">
@@ -546,7 +664,132 @@
         </button>
       </div>
 
-      <!-- CENTERED EMBOSSED FLOATING GALLANT LOGO ABOVE PARK AVENUE TITLE -->
+      <div class="max-w-5xl mx-auto px-6 reveal-up relative z-10">
+        <div style="margin-bottom:4rem;text-align:center;">
+          <div class="gallant-surface-emblem" aria-label="Gallant Floating Emblem">
+            <img src="gallant-logo-hero.png" alt="Gallant Builders Emblem" />
+          </div>
+          <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.25em;display:block;margin-bottom:0.75rem;">Executive Board</span>
+          <h1 class="font-heading animated-page-title">Leadership</h1>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:3rem;">
+
+          <!-- CHAIRMAN (Tanweer A Kazmi) -->
+          <div class="msg-layout-row reveal-up">
+            <div class="passport-photo-box">
+              <img src="chairman.jpeg" alt="Chairman Tanweer A Kazmi" />
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <h3 class="font-heading text-ink-900 heading-card" style="margin-bottom:1.25rem;">Chairman</h3>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
+                At Gallant Builders &amp; Developers, our philosophy is anchored in unshakeable trust, architectural integrity, and generational equity for every family and investor.
+              </p>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
+                Through visionary master planning across our gated communities, we curate sanctuary environments where landscape, security, and urban growth converge.
+              </p>
+              <div style="text-align:right;">
+                <div class="font-heading text-bronze-600 text-2xl">Tanweer A Kazmi</div>
+                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Chairman</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CEO - AMJAD SANDHU -->
+          <div class="msg-layout-row reveal-up">
+            <div class="passport-photo-box">
+              <img src="WhatsApp Image 2026-09-17 at 10.16.15 PM.jpeg" alt="CEO Amjad Sandhu" />
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <h3 class="font-heading text-ink-900 heading-card" style="margin-bottom:1.25rem;">CEO</h3>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
+                As Chief Executive Officer, my mandate is strict on-ground engineering discipline, accelerated infrastructure milestones, and zero-compromise site execution.
+              </p>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
+                From wide arterial boulevards to underground electrification and amenity zones, our construction divisions deliver finished realities on schedule.
+              </p>
+              <div style="text-align:right;">
+                <div class="font-heading text-bronze-600 text-2xl">Amjad Sandhu</div>
+                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Chief Executive Officer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GENERAL MANAGER - ALI RAZA SANDHU -->
+          <div class="msg-layout-row reveal-up">
+            <div class="passport-photo-box">
+              <img src="GM.jpeg" alt="General Manager Ali Raza Sandhu" />
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <h3 class="font-heading text-ink-900 heading-card" style="margin-bottom:1.25rem;">General Manager</h3>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
+                Overseeing daily operational workflows, cross-departmental coordination, and customer relationship delivery across our residential developments.
+              </p>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
+                Ensuring seamless site-to-office communication, strict adherence to project timelines, and elevated service standards for every stakeholder.
+              </p>
+              <div style="text-align:right;">
+                <div class="font-heading text-bronze-600 text-2xl">Ali Raza Sandhu</div>
+                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">General Manager</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEGAL TEAM ADVISOR HEAD (Raja Shehzad Changez) -->
+          <div class="msg-layout-row reveal-up">
+            <div class="passport-photo-box">
+              <img src="WhatsApp Image 2026-09-17 at 10.38.18 PM.jpeg" alt="Legal Raja Shehzad Changez" />
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <h3 class="font-heading text-ink-900 heading-card" style="margin-bottom:1.25rem;">Legal Team Advisor</h3>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
+                Asset protection begins with audited land title clearance, LDA-aligned statutory compliance, and completely transparent allotment documentation.
+              </p>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
+                Our legal advisory desk guarantees that every plot or commercial file issued by Gallant carries verified, dispute-free legal lineage.
+              </p>
+              <div style="text-align:right;">
+                <div class="font-heading text-bronze-600 text-2xl">Raja Shehzad Changez</div>
+                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Legal Advisor Head</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IT DEPARTMENT HEAD (Muhaimin Azeem) -->
+          <div class="msg-layout-row reveal-up">
+            <div class="passport-photo-box">
+              <img src="Aman Ahsan.png" alt="Aman  Ahsan" />
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <h3 class="font-heading text-ink-900 heading-card" style="margin-bottom:1.25rem;">IT Head</h3>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:1rem;">
+                Driving digital transformation, official brand presence, and seamless web/cloud infrastructure across all Gallant portfolio channels.
+              </p>
+              <p class="text-ink-600 font-light text-base" style="line-height:1.8;margin-bottom:2rem;">
+                Directing social media channels, project landing pages, online marketing campaigns, and site performance to amplify market reach and customer engagement.
+              </p>
+              <div style="text-align:right;">
+                <div class="font-heading text-bronze-600 text-2xl">Aman Ahsan</div>
+                <div class="text-xs uppercase tracking-wider text-ink-500 font-medium">Head of IT &amp; Digital Marketing</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ================= VIEW 2: PARK AVENUE DETAIL PAGE ================= -->
+  <div id="view-detail-park" class="hidden" style="padding-top:7rem;">
+    <main style="padding:4rem 0 7rem;">
+      <div class="max-w-7xl mx-auto px-6" style="margin-bottom:2rem;">
+        <button onclick="switchView('main'); return false;" class="inline-flex items-center gap-2 text-sm font-medium text-ink-600 hover:text-bronze-600">
+          <svg style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Portfolio Overview
+        </button>
+      </div>
+
       <div class="max-w-7xl mx-auto px-6 text-center" style="margin-bottom:4rem;">
         <div class="gallant-surface-emblem" aria-label="Gallant Floating Emblem">
           <img src="gallant-logo-hero.png" alt="Gallant Builders Emblem" />
@@ -560,20 +803,18 @@
       <div class="max-w-7xl mx-auto px-6" style="margin-bottom:6rem;">
         <div style="margin-bottom:3.5rem;">
           <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.5rem;">Inventory Showcase</span>
-          <h2 class="font-heading text-ink-900 text-3xl sm:text-5xl">What We Offer</h2>
+          <h2 class="font-heading text-ink-900 heading-xl">What We Offer</h2>
         </div>
 
-        <!-- ROW 1: RESIDENTIAL PLOTS -->
         <div style="margin-bottom:4rem;">
           <div class="flex items-center" style="margin-bottom:1.5rem;">
             <span class="row-num-badge">01</span>
-            <h3 class="font-heading text-2xl sm:text-3xl text-ink-900">Residential Plots</h3>
+            <h3 class="font-heading text-ink-900 heading-md">Residential Plots</h3>
           </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80" alt="Compact Residential Land" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Utility Ready</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">3 Marla Residential Plot</h4>
@@ -584,7 +825,6 @@
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80" alt="Suburban 5 Marla Plot" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Phase 1</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">5 Marla Residential Plot</h4>
@@ -595,7 +835,6 @@
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80" alt="10 Marla Villa Layout" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Wide Boulevard</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">10 Marla Residential Plot</h4>
@@ -606,7 +845,6 @@
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=700&q=80" alt="1 Kanal Estate Landscape" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Boulevard</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">1 Kanal Residential Plot</h4>
@@ -616,17 +854,15 @@
           </div>
         </div>
 
-        <!-- ROW 2: COMMERCIAL PLOTS -->
         <div style="margin-bottom:4rem;">
           <div class="flex items-center" style="margin-bottom:1.5rem;">
             <span class="row-num-badge">02</span>
-            <h3 class="font-heading text-2xl sm:text-3xl text-ink-900">Commercial Plots</h3>
+            <h3 class="font-heading text-ink-900 heading-md">Commercial Plots</h3>
           </div>
           <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Retail Commercial Storefront" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">High Footfall</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">4 Marla Commercial Plot</h4>
@@ -637,7 +873,6 @@
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Commercial Plaza Architecture" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Plaza Approved</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">8 Marla Commercial Plot</h4>
@@ -647,47 +882,34 @@
           </div>
         </div>
 
-        <!-- ROW 3: TOWNHOUSES & APARTMENTS -->
+        <!-- TOWNHOUSE CATEGORY -->
         <div>
           <div class="flex items-center" style="margin-bottom:1.5rem;">
             <span class="row-num-badge">03</span>
-            <h3 class="font-heading text-2xl sm:text-3xl text-ink-900">Townhouses </h3>
+            <h3 class="font-heading text-ink-900 heading-md">Townhouses</h3>
           </div>
-          <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
               <div style="height:210px;overflow:hidden;position:relative;">
                 <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Modern Townhouse Façade" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Turnkey</div>
               </div>
               <div style="padding:1.25rem;text-align:center;">
                 <h4 class="font-bold text-ink-900 text-base">Luxury Townhouses</h4>
                 <p class="text-xs text-ink-500 font-light mt-1">Contemporary finished duplex units with private garden</p>
               </div>
             </div>
-
-            <div class="card-depth bg-white rounded-2xl overflow-hidden border border-[rgba(224,196,153,.35)] shadow-sm">
-              <div style="height:210px;overflow:hidden;position:relative;">
-                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Apartment Residential Complex" style="width:100%;height:100%;object-fit:cover;" />
-                <div style="position:absolute;top:12px;right:12px;background:rgba(20,16,13,0.75);color:#fefdfb;font-size:0.75rem;padding:4px 10px;border-radius:9999px;">Community View</div>
-              </div>
-              <div style="padding:1.25rem;text-align:center;">
-                <h4 class="font-bold text-ink-900 text-base">Signature Apartments</h4>
-                <p class="text-xs text-ink-500 font-light mt-1">High-rise serviced residences overlooking central green avenues</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- PAYMENT PLAN SECTION (UNIFIED LIGHT SURFACE, CENTERED & PROPORTIONATE SIZE) -->
+      <!-- PAYMENT PLAN SECTION -->
       <div class="max-w-7xl mx-auto px-6" style="margin-bottom:6rem;">
         <div style="margin-bottom:3rem;text-align:center;">
           <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.5rem;">Investment Schedules</span>
-          <h2 class="font-heading text-ink-900 text-3xl sm:text-5xl">Payment Plan</h2>
+          <h2 class="font-heading text-ink-900 heading-xl">Payment Plan</h2>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:3.5rem;max-width:820px;margin:0 auto;">
-          <!-- RESIDENTIAL PAYMENT PLAN CARD -->
           <div style="background:#fefdfb;border-radius:1.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 12px 35px rgba(20,17,10,.06);overflow:hidden;padding:1.75rem;">
             <div style="text-align:center;margin-bottom:1.25rem;">
               <span class="font-heading tracking-widest text-bronze-600 text-xl uppercase block">Residential Payment Schedule</span>
@@ -698,7 +920,6 @@
             </div>
           </div>
 
-          <!-- COMMERCIAL PAYMENT PLAN CARD -->
           <div style="background:#fefdfb;border-radius:1.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 12px 35px rgba(20,17,10,.06);overflow:hidden;padding:1.75rem;">
             <div style="text-align:center;margin-bottom:1.25rem;">
               <span class="font-heading tracking-widest text-bronze-600 text-xl uppercase block">Commercial Payment Schedule</span>
@@ -711,14 +932,13 @@
         </div>
       </div>
 
-      <!-- DEDICATED MID-SIZE SOCIETY MASTER MAP SECTION PLACED AFTER PAYMENT PLAN -->
+      <!-- SOCIETY MASTER MAP -->
       <div class="max-w-7xl mx-auto px-6">
         <div style="background:#fefdfb;border-radius:1.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 18px 45px rgba(20,17,10,.08);padding:2.5rem 1.5rem;max-width:880px;margin-left:auto;margin-right:auto;">
           <div style="text-align:center;margin-bottom:1.75rem;">
             <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.4rem;">Master Layout</span>
-            <h2 class="font-heading text-ink-900 text-3xl sm:text-4xl">Society Master Map</h2>
+            <h2 class="font-heading text-ink-900 heading-md">Society Master Map</h2>
           </div>
-          <!-- Mid-size framed map container -->
           <div style="background:#faf7f0;border-radius:1rem;border:1px solid rgba(184,133,62,.3);padding:1rem;max-width:740px;margin:0 auto;box-shadow:inset 0 2px 10px rgba(30,24,19,.04);">
             <img src="map.PNG" alt="Park Avenue Society Master Map" style="width:100%;max-height:420px;object-fit:contain;border-radius:0.75rem;display:block;margin:0 auto;" />
             <div style="text-align:center;margin-top:0.75rem;">
@@ -726,10 +946,51 @@
             </div>
           </div>
         </div>
+      </div>
+    </main>
+  </div>
 
-        <div style="text-align:center;margin-top:5rem;">
-         
+  <!-- ================= VIEW 3: GALLANT HOMES DETAIL PAGE ================= -->
+  <div id="view-detail-homes" class="hidden" style="padding-top:7rem;">
+    <main style="padding:4rem 0 7rem;">
+      <div class="max-w-7xl mx-auto px-6" style="margin-bottom:2rem;">
+        <button onclick="switchView('main'); return false;" class="inline-flex items-center gap-2 text-sm font-medium text-ink-600 hover:text-bronze-600">
+          <svg style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Portfolio Overview
+        </button>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 text-center" style="margin-bottom:3.5rem;">
+        <div class="gallant-surface-emblem" aria-label="Gallant Floating Emblem">
+          <img src="gallant-logo-hero.png" alt="Gallant Builders Emblem" />
         </div>
+        <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.25em;display:block;margin-bottom:0.75rem;">Signature Residential Enclave</span>
+        <h1 class="font-heading animated-page-title">GALLANT HOMES</h1>
+        <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mt-2">Firozpur Road, Lahore [cite: 7]</span>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-6" style="margin-bottom:3rem;">
+        <div style="text-align:center;margin-bottom:2.5rem;">
+          <span class="section-label text-xs uppercase font-semibold text-bronze-600 justify-center mb-2">Topography &amp; Layout</span>
+          <h2 class="font-heading text-ink-900 heading-xl">Master Plan</h2>
+        </div>
+
+        <div style="background:#fefdfb;border-radius:1.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 12px 35px rgba(20,17,10,.06);padding:clamp(1.75rem,4vw,2.5rem);">
+          <div style="background:#faf7f0;border-radius:1rem;border:1px solid rgba(184,133,62,.3);padding:1rem;margin:0 auto;box-shadow:inset 0 2px 10px rgba(30,24,19,.04);">
+            <img src="gallant homes 1.jpg" alt="Gallant Homes Master Plan Map" style="width:100%;max-height:550px;object-fit:contain;border-radius:0.75rem;display:block;margin:0 auto;" />
+          </div>
+
+          <div style="text-align:center;margin-top:2rem;">
+            <a href="https://maps.app.goo.gl/u9xhMYLQC51Lu6288?g_st=iw" target="_blank" rel="noopener" class="btn-bronze" style="padding:14px 32px;border-radius:9999px;font-size:.9rem;font-weight:600;">
+              <svg class="icon icon-sm" style="color:#14110a"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>View Location on Map</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top:4rem;">
+        <div class="font-heading text-bronze-600 text-2xl sm:text-3xl italic tracking-wider">Stay tuned!</div>
       </div>
     </main>
   </div>
@@ -737,7 +998,7 @@
   <!-- 7. PERFECTLY DESIGNED PITCH BLACK LUXURY FOOTER -->
   <footer style="position:relative;background:#080605;color:#fefdfb;padding:6rem 0 3rem;border-top:1px solid rgba(184,133,62,.25);">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-10" style="margin-bottom:4rem;">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10" style="margin-bottom:4rem;">
         <div>
           <div class="flex items-center gap-3.5" style="margin-bottom:1.25rem;">
             <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
@@ -756,20 +1017,20 @@
         <div>
           <h4 class="font-heading text-bronze-300 text-lg uppercase tracking-wider mb-4">Quick Navigation</h4>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;font-size:0.875rem;color:rgba(254,253,251,0.75);">
-            <li><a href="#home" onclick="switchView('main'); return false;" style="transition:color .3s">Home</a></li>
-            <li><a href="#about" onclick="switchView('main'); return false;" style="transition:color .3s">About</a></li>
-            <li><a href="#properties" onclick="switchView('main'); return false;" style="transition:color .3s">Projects</a></li>
-            <li><a href="#contact" onclick="switchView('main'); return false;" style="transition:color .3s">contact us</a></li>
+            <li><a href="#about" onclick="navJump('about'); return false;" style="transition:color .3s">About</a></li>
+            <li><a href="#" onclick="switchView('leadership'); return false;" style="transition:color .3s">Leadership</a></li>
+            <li><a href="#properties" onclick="navJump('properties'); return false;" style="transition:color .3s">Projects</a></li>
+            <li><a href="#contact" onclick="navJump('contact'); return false;" style="transition:color .3s">contact us</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="font-heading text-bronze-300 text-lg uppercase tracking-wider mb-4">Flagship Project</h4>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;font-size:0.875rem;color:rgba(254,253,251,0.75);">
-            <li><a href="#properties" onclick="switchView('detail'); return false;" style="transition:color .3s">Park Avenue Housing Society</a></li>
-            <li><a href="#properties" onclick="switchView('detail'); return false;" style="transition:color .3s">Residential Plot Schedules</a></li>
-            <li><a href="#properties" onclick="switchView('detail'); return false;" style="transition:color .3s">Commercial Plaza Inventories</a></li>
-            <li><a href="#properties" onclick="switchView('detail'); return false;" style="transition:color .3s">LDA Approved Master Plan</a></li>
+            <li><a href="#properties" onclick="switchView('detail-park'); return false;" style="transition:color .3s">Park Avenue Housing Society</a></li>
+            <li><a href="#properties" onclick="switchView('detail-homes'); return false;" style="transition:color .3s">Gallant Homes Enclave</a></li>
+            <li><a href="#properties" onclick="switchView('detail-park'); return false;" style="transition:color .3s">Residential &amp; Commercial Schedules</a></li>
+            <li><a href="#properties" onclick="switchView('detail-park'); return false;" style="transition:color .3s">LDA Approved Master Plan</a></li>
           </ul>
         </div>
 
@@ -804,19 +1065,114 @@
 
     function svg(name, cls) { return '<svg class="icon ' + (cls || 'icon-md') + '">' + (icons[name] || '') + '</svg>'; }
 
-    function switchView(viewName) {
-      var mainView = document.getElementById('view-main');
-      var detailView = document.getElementById('view-detail');
-      if (viewName === 'detail') {
-        mainView.classList.add('hidden');
-        detailView.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    function updateNavbarTheme(activeView) {
+      var nav = document.getElementById('navbar');
+      var brandTitle = document.getElementById('nav-brand-title');
+      var brandSub = document.getElementById('nav-brand-sub');
+      var linkItems = document.querySelectorAll('.nav-link-item');
+      var ctaBtn = document.getElementById('nav-cta-btn');
+      var toggleBtn = document.getElementById('nav-toggle');
+
+      if (activeView !== 'main') {
+        nav.style.background = 'rgba(255, 255, 255, 0.94)';
+        nav.style.backdropFilter = 'blur(20px)';
+        nav.style.webkitBackdropFilter = 'blur(20px)';
+        nav.style.borderBottom = '1px solid rgba(184, 133, 62, 0.22)';
+        brandTitle.style.color = '#1f1a11';
+        brandTitle.style.textShadow = 'none';
+        brandSub.style.color = '#7c5424';
+        brandSub.style.textShadow = 'none';
+        linkItems.forEach(function(l) {
+          if (window.innerWidth > 899) {
+            l.style.color = '#2e2719';
+            l.style.textShadow = 'none';
+          }
+        });
+        ctaBtn.style.background = 'linear-gradient(135deg, #dfb576, #cda368 50%, #a27334)';
+        ctaBtn.style.color = '#14110a';
+        if (toggleBtn) toggleBtn.style.color = '#1f1a11';
       } else {
-        detailView.classList.add('hidden');
-        mainView.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (window.scrollY > 40) {
+          nav.style.background = 'rgba(35,28,21,0.95)';
+          nav.style.backdropFilter = 'blur(20px)';
+          nav.style.webkitBackdropFilter = 'blur(20px)';
+          nav.style.borderBottom = '1px solid rgba(205,163,104,0.4)';
+          brandTitle.style.color = '#fefdfb';
+          brandSub.style.color = '#cda368';
+          linkItems.forEach(function(l) { if (window.innerWidth > 899) l.style.color = '#fefdfb'; });
+        } else {
+          nav.style.background = 'transparent';
+          nav.style.backdropFilter = 'none';
+          nav.style.webkitBackdropFilter = 'none';
+          nav.style.borderBottom = '1px solid transparent';
+          brandTitle.style.color = '#fefdfb';
+          brandSub.style.color = '#cda368';
+          linkItems.forEach(function(l) { if (window.innerWidth > 899) l.style.color = '#fefdfb'; });
+        }
+        if (toggleBtn) toggleBtn.style.color = '#fefdfb';
       }
     }
+
+    function switchView(viewName) {
+      var views = ['view-main', 'view-leadership', 'view-detail-park', 'view-detail-homes'];
+      views.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+
+      var activeEl = document.getElementById(
+        viewName === 'main' ? 'view-main' :
+        viewName === 'leadership' ? 'view-leadership' :
+        viewName === 'detail-homes' ? 'view-detail-homes' : 'view-detail-park'
+      );
+      if (activeEl) {
+        activeEl.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        updateNavbarTheme(viewName === 'main' ? 'main' : 'sub');
+      }
+      closeMobileNav();
+    }
+
+    function navJump(targetId) {
+      switchView('main');
+      setTimeout(function() {
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+      closeMobileNav();
+    }
+
+    function toggleMobileNav() {
+      var nav = document.getElementById('nav-links');
+      var toggle = document.getElementById('nav-toggle');
+      var overlay = document.getElementById('nav-overlay');
+      if (!nav || !toggle) return;
+      var isOpen = nav.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (overlay) overlay.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    function closeMobileNav() {
+      var nav = document.getElementById('nav-links');
+      var toggle = document.getElementById('nav-toggle');
+      var overlay = document.getElementById('nav-overlay');
+      if (!nav || !nav.classList.contains('open')) return;
+      nav.classList.remove('open');
+      if (toggle) {
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      if (overlay) overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 899) closeMobileNav();
+    });
 
     var revealEls = document.querySelectorAll('.reveal-up, .reveal-stagger');
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -846,26 +1202,9 @@
       }).join('');
     }
 
-    // Scroll state change for merged transparent-to-solid sticky navbar
     window.addEventListener('scroll', function () {
-      var nav = document.getElementById('navbar');
-      var inner = document.getElementById('nav-inner');
-      if (!nav || !inner) return;
-      if (window.scrollY > 40) {
-        nav.style.background = 'rgba(35,28,21,0.95)';
-        nav.style.backdropFilter = 'blur(20px)';
-        nav.style.webkitBackdropFilter = 'blur(20px)';
-        nav.style.borderBottom = '1px solid rgba(205,163,104,0.4)';
-        nav.style.padding = '0.707rem 0';
-        inner.style.padding = '0';
-      } else {
-        nav.style.background = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.webkitBackdropFilter = 'none';
-        nav.style.borderBottom = '1px solid transparent';
-        nav.style.padding = '1.15rem 0';
-        inner.style.padding = '0';
-      }
+      var isMainVisible = !document.getElementById('view-main').classList.contains('hidden');
+      updateNavbarTheme(isMainVisible ? 'main' : 'sub');
     });
   </script>
 </body>
