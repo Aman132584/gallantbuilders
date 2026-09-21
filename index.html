@@ -16,7 +16,7 @@
     ::selection { background: rgba(184, 133, 62, .25); color: #14110a; }
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    img { display: block; max-width: 100%; }
+    img { display: block; max-width: 100%; transition: opacity 0.3s ease; }
     section { scroll-margin-top: 80px; }
 
     /* ===== TYPOGRAPHY & GRADIENTS ===== */
@@ -223,7 +223,7 @@
     .heading-md { font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.25; }
     .heading-card { font-size: clamp(1.55rem, 2.8vw, 2.15rem); line-height: 1.25; }
 
-    /* ===== HERO RESPONSIVE STYLES ===== */
+    /* ===== HERO RESPONSIVE STYLES (Slightly larger mobile/tablet hero text) ===== */
     .hero-bg-desktop { display: block; width: 100%; height: 100%; object-fit: cover; }
     .hero-bg-mobile { display: none; width: 100%; height: 100%; object-fit: cover; }
     @media (max-width: 640px) {
@@ -233,7 +233,7 @@
     }
     @keyframes heroZoomMobile { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-    .hero-title-main { font-size: clamp(1.6rem, 5.6vw, 4.4rem); font-weight: 600; letter-spacing: 0.02em; }
+    .hero-title-main { font-size: clamp(2.0rem, 6.8vw, 4.4rem); font-weight: 600; letter-spacing: 0.02em; }
     .hero-title-desktop { display: inline; }
     .hero-title-mobile-break { display: none; }
     @media (max-width: 640px) {
@@ -300,7 +300,6 @@
       .project-card h3 { font-size: clamp(2rem, 6vw, 2.3rem) !important; }
       .animated-page-title { font-size: clamp(2.1rem, 11vw, 3.25rem) !important; }
       .gallant-surface-emblem { margin-bottom: 1.25rem !important; }
-      /* Mobile brand tight alignment fixes */
       #nav-logo { gap: 0.45rem !important; }
       #nav-logo > div:first-child { width: 36px !important; height: 36px !important; }
       #nav-brand-title { font-size: 0.92rem !important; line-height: 1.05 !important; }
@@ -404,7 +403,7 @@
 
       <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;flex-direction:column;align-items:center">
         <h1 class="font-heading" style="color:#fefdfb;line-height:1.2;margin-bottom:2.25rem;text-shadow:0 4px 28px rgba(0,0,0,0.88);">
-          <span class="hero-stagger-1 block" style="color:#ffffff;font-size:clamp(1.4rem,3.5vw,2.75rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
+          <span class="hero-stagger-1 block" style="color:#ffffff;font-size:clamp(1.65rem,4.5vw,2.85rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
             Welcome to
           </span>
           <span class="hero-stagger-1 block text-bronze-gradient hero-title-main">
@@ -412,7 +411,7 @@
             <span class="hero-title-mobile-break"></span>
             Developers
           </span>
-          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.05rem,3.4vw,2.65rem);font-weight:600;letter-spacing:0.08em;margin-top:0.45rem;text-shadow:0 2px 14px rgba(205,163,104,0.45);">
+          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.3rem,4.2vw,2.65rem);font-weight:600;letter-spacing:0.08em;margin-top:0.45rem;text-shadow:0 2px 14px rgba(205,163,104,0.45);">
             Pvt Ltd
           </span>
         </h1>
@@ -942,8 +941,16 @@
     </div>
   </footer>
 
-  <!-- ================= HUMANIZED APPLICATION LOGIC ================= -->
+  <!-- ================= SAFE HUMANIZED APPLICATION LOGIC & ERROR HANDLING ================= -->
   <script>
+    // Global defensive image error fallback (prevents broken 404 images from throwing or looking broken)
+    window.addEventListener('error', function(e) {
+      if (e.target && e.target.tagName === 'IMG') {
+        e.target.style.opacity = '0.35';
+        e.target.style.background = '#2e2719';
+      }
+    }, true);
+
     // Lightweight SVG icon registry
     const appIcons = {
       mapPin: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>',
@@ -951,131 +958,155 @@
       phone: '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>'
     };
 
-    // Navbar adaptation based on current view/scroll state
+    // Safe Navbar adaptation based on current view/scroll state
     function updateNavbarTheme(activeView) {
-      const nav = document.getElementById('navbar');
-      const brandTitle = document.getElementById('nav-brand-title');
-      const brandSub = document.getElementById('nav-brand-sub');
-      const linkItems = document.querySelectorAll('.nav-link-item');
-      const ctaBtn = document.getElementById('nav-cta-btn');
-      const toggleBtn = document.getElementById('nav-toggle');
+      try {
+        const nav = document.getElementById('navbar');
+        const brandTitle = document.getElementById('nav-brand-title');
+        const brandSub = document.getElementById('nav-brand-sub');
+        const linkItems = document.querySelectorAll('.nav-link-item');
+        const ctaBtn = document.getElementById('nav-cta-btn');
+        const toggleBtn = document.getElementById('nav-toggle');
+        if (!nav) return;
 
-      if (activeView !== 'main') {
-        nav.style.background = 'rgba(255, 255, 255, 0.94)';
-        nav.style.backdropFilter = 'blur(20px)';
-        nav.style.webkitBackdropFilter = 'blur(20px)';
-        nav.style.borderBottom = '1px solid rgba(184, 133, 62, 0.22)';
-        brandTitle.style.color = '#1f1a11';
-        brandTitle.style.textShadow = 'none';
-        brandSub.style.color = '#7c5424';
-        brandSub.style.textShadow = 'none';
-        linkItems.forEach((l) => {
-          if (window.innerWidth > 1024) {
-            l.style.color = '#2e2719';
-            l.style.textShadow = 'none';
-          }
-        });
-        ctaBtn.style.background = 'linear-gradient(135deg, #dfb576, #cda368 50%, #a27334)';
-        ctaBtn.style.color = '#14110a';
-        if (toggleBtn) {
-          toggleBtn.style.color = '#1f1a11';
-          toggleBtn.style.borderColor = 'rgba(31,26,17,0.3)';
-          toggleBtn.style.background = 'rgba(31,26,17,0.06)';
-        }
-      } else {
-        if (window.scrollY > 40) {
-          nav.style.background = 'rgba(35,28,21,0.95)';
+        if (activeView !== 'main') {
+          nav.style.background = 'rgba(255, 255, 255, 0.94)';
           nav.style.backdropFilter = 'blur(20px)';
           nav.style.webkitBackdropFilter = 'blur(20px)';
-          nav.style.borderBottom = '1px solid rgba(205,163,104,0.4)';
-          brandTitle.style.color = '#fefdfb';
-          brandSub.style.color = '#cda368';
-          linkItems.forEach((l) => { if (window.innerWidth > 1024) l.style.color = '#fefdfb'; });
+          nav.style.borderBottom = '1px solid rgba(184, 133, 62, 0.22)';
+          if (brandTitle) { brandTitle.style.color = '#1f1a11'; brandTitle.style.textShadow = 'none'; }
+          if (brandSub) { brandSub.style.color = '#7c5424'; brandSub.style.textShadow = 'none'; }
+          linkItems.forEach((l) => {
+            if (window.innerWidth > 1024) {
+              l.style.color = '#2e2719';
+              l.style.textShadow = 'none';
+            }
+          });
+          if (ctaBtn) {
+            ctaBtn.style.background = 'linear-gradient(135deg, #dfb576, #cda368 50%, #a27334)';
+            ctaBtn.style.color = '#14110a';
+          }
+          if (toggleBtn) {
+            toggleBtn.style.color = '#1f1a11';
+            toggleBtn.style.borderColor = 'rgba(31,26,17,0.3)';
+            toggleBtn.style.background = 'rgba(31,26,17,0.06)';
+          }
         } else {
-          nav.style.background = 'transparent';
-          nav.style.backdropFilter = 'none';
-          nav.style.webkitBackdropFilter = 'none';
-          nav.style.borderBottom = '1px solid transparent';
-          brandTitle.style.color = '#fefdfb';
-          brandSub.style.color = '#cda368';
-          linkItems.forEach((l) => { if (window.innerWidth > 1024) l.style.color = '#fefdfb'; });
+          if (window.scrollY > 40) {
+            nav.style.background = 'rgba(35,28,21,0.95)';
+            nav.style.backdropFilter = 'blur(20px)';
+            nav.style.webkitBackdropFilter = 'blur(20px)';
+            nav.style.borderBottom = '1px solid rgba(205,163,104,0.4)';
+            if (brandTitle) brandTitle.style.color = '#fefdfb';
+            if (brandSub) brandSub.style.color = '#cda368';
+            linkItems.forEach((l) => { if (window.innerWidth > 1024) l.style.color = '#fefdfb'; });
+          } else {
+            nav.style.background = 'transparent';
+            nav.style.backdropFilter = 'none';
+            nav.style.webkitBackdropFilter = 'none';
+            nav.style.borderBottom = '1px solid transparent';
+            if (brandTitle) brandTitle.style.color = '#fefdfb';
+            if (brandSub) brandSub.style.color = '#cda368';
+            linkItems.forEach((l) => { if (window.innerWidth > 1024) l.style.color = '#fefdfb'; });
+          }
+          if (toggleBtn) {
+            toggleBtn.style.color = '#fefdfb';
+            toggleBtn.style.borderColor = 'rgba(205,163,104,0.45)';
+            toggleBtn.style.background = 'rgba(255,255,255,0.12)';
+          }
         }
-        if (toggleBtn) {
-          toggleBtn.style.color = '#fefdfb';
-          toggleBtn.style.borderColor = 'rgba(205,163,104,0.45)';
-          toggleBtn.style.background = 'rgba(255,255,255,0.12)';
-        }
+      } catch (err) {
+        console.warn('Navbar theme update minor error:', err);
       }
     }
 
-    // Single-page router switcher
+    // Safe single-page router switcher
     function switchView(viewName) {
-      const views = ['view-main', 'view-executive', 'view-detail-park', 'view-detail-homes'];
-      views.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) el.classList.add('hidden');
-      });
-
-      const activeEl = document.getElementById(
-        viewName === 'main' ? 'view-main' :
-        viewName === 'executive' ? 'view-executive' :
-        viewName === 'detail-homes' ? 'view-detail-homes' : 'view-detail-park'
-      );
-      if (activeEl) {
-        activeEl.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        updateNavbarTheme(viewName === 'main' ? 'main' : 'sub');
-      }
-      closeMobileNav();
-      setTimeout(() => {
-        document.querySelectorAll('.reveal-up:not(.in-view)').forEach((el) => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight) el.classList.add('in-view');
+      try {
+        const views = ['view-main', 'view-executive', 'view-detail-park', 'view-detail-homes'];
+        views.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('hidden');
         });
-      }, 100);
-    }
 
-    // Direct scroll anchor navigation
-    function navJump(targetId) {
-      switchView('main');
-      setTimeout(() => {
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const activeId =
+          viewName === 'main' ? 'view-main' :
+          viewName === 'executive' ? 'view-executive' :
+          viewName === 'detail-homes' ? 'view-detail-homes' : 'view-detail-park';
+
+        const activeEl = document.getElementById(activeId);
+        if (activeEl) {
+          activeEl.classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          updateNavbarTheme(viewName === 'main' ? 'main' : 'sub');
         }
-      }, 50);
-      closeMobileNav();
+        closeMobileNav();
+        setTimeout(() => {
+          document.querySelectorAll('.reveal-up:not(.in-view)').forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) el.classList.add('in-view');
+          });
+        }, 100);
+      } catch (err) {
+        console.error('Safe view switch error:', err);
+      }
     }
 
-    // Mobile slide-over navigation handlers
+    // Direct scroll anchor navigation with safety
+    function navJump(targetId) {
+      try {
+        switchView('main');
+        setTimeout(() => {
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 50);
+        closeMobileNav();
+      } catch (err) {
+        console.error('navJump error:', err);
+      }
+    }
+
+    // Safe mobile slide-over navigation handlers
     function toggleMobileNav(e) {
       if (e) {
-        e.stopPropagation();
-        e.preventDefault();
+        try {
+          e.stopPropagation();
+          e.preventDefault();
+        } catch (_) {}
       }
-      const nav = document.getElementById('nav-links');
-      const toggle = document.getElementById('nav-toggle');
-      const overlay = document.getElementById('nav-overlay');
-      if (!nav || !toggle) return;
-      const isOpen = nav.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      if (overlay) overlay.classList.toggle('open', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      try {
+        const nav = document.getElementById('nav-links');
+        const toggle = document.getElementById('nav-toggle');
+        const overlay = document.getElementById('nav-overlay');
+        if (!nav || !toggle) return;
+        const isOpen = nav.classList.toggle('open');
+        toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        if (overlay) overlay.classList.toggle('open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      } catch (err) {
+        console.error('toggleMobileNav error:', err);
+      }
     }
 
     function closeMobileNav() {
-      const nav = document.getElementById('nav-links');
-      const toggle = document.getElementById('nav-toggle');
-      const overlay = document.getElementById('nav-overlay');
-      if (!nav || !nav.classList.contains('open')) return;
-      nav.classList.remove('open');
-      if (toggle) {
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+      try {
+        const nav = document.getElementById('nav-links');
+        const toggle = document.getElementById('nav-toggle');
+        const overlay = document.getElementById('nav-overlay');
+        if (!nav || !nav.classList.contains('open')) return;
+        nav.classList.remove('open');
+        if (toggle) {
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+        if (overlay) overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      } catch (err) {
+        console.error('closeMobileNav error:', err);
       }
-      if (overlay) overlay.classList.remove('open');
-      document.body.style.overflow = '';
     }
 
     // Window resize observer for responsive safety
@@ -1083,49 +1114,60 @@
       if (window.innerWidth > 1024) closeMobileNav();
     });
 
-    // Reveal on scroll observer
-    const revealEls = document.querySelectorAll('.reveal-up');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach((el) => revealObserver.observe(el));
+    // Reveal on scroll observer with safety checks
+    try {
+      const revealEls = document.querySelectorAll('.reveal-up');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => revealObserver.observe(el));
+    } catch (_) {}
 
-    // Render interactive contact widgets
-    const contactWidgets = [
-      { type: 'link', href: 'https://maps.app.goo.gl/KgKkXiqoJku7epsv5?g_st=aw', target: '_blank', icon: 'mapPin', label: 'Office Address', value: 'Main Kot Araian - Jia Bagga Rd, Lahore, 55151' },
-      { type: 'link', href: 'https://wa.me/923039853967', target: '_blank', icon: 'phone', label: 'WhatsApp', value: '0303 9853967' },
-      { type: 'link', href: 'mailto:gallantbuildersdevelopers@gmail.com', target: '_self', icon: 'mail', label: 'Corporate Email', value: 'gallantbuildersdevelopers@gmail.com' }
-    ];
-    const ciEl = document.getElementById('contact-info');
-    if (ciEl) {
-      ciEl.innerHTML = contactWidgets.map((item) => {
-        return `<a href="${item.href}" target="${item.target}" rel="${item.target === '_blank' ? 'noopener' : ''}" class="interactive-widget" title="${item.label} — ${item.value}">
-          <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#cda368,#b8853e);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg class="icon icon-lg" style="color:#100c09">${appIcons[item.icon]}</svg>
-          </div>
-          <div><div class="text-xs text-ink-500 uppercase font-semibold" style="margin-bottom:4px">${item.label}</div><div class="text-ink-900 font-medium text-sm">${item.value}</div></div>
-        </a>`;
-      }).join('');
+    // Safe render interactive contact widgets
+    try {
+      const contactWidgets = [
+        { type: 'link', href: 'https://maps.app.goo.gl/KgKkXiqoJku7epsv5?g_st=aw', target: '_blank', icon: 'mapPin', label: 'Office Address', value: 'Main Kot Araian - Jia Bagga Rd, Lahore, 55151' },
+        { type: 'link', href: 'https://wa.me/923039853967', target: '_blank', icon: 'phone', label: 'WhatsApp', value: '0303 9853967' },
+        { type: 'link', href: 'mailto:gallantbuildersdevelopers@gmail.com', target: '_self', icon: 'mail', label: 'Corporate Email', value: 'gallantbuildersdevelopers@gmail.com' }
+      ];
+      const ciEl = document.getElementById('contact-info');
+      if (ciEl) {
+        ciEl.innerHTML = contactWidgets.map((item) => {
+          return `<a href="${item.href}" target="${item.target}" rel="${item.target === '_blank' ? 'noopener' : ''}" class="interactive-widget" title="${item.label} — ${item.value}">
+            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#cda368,#b8853e);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg class="icon icon-lg" style="color:#100c09">${appIcons[item.icon] || ''}</svg>
+            </div>
+            <div><div class="text-xs text-ink-500 uppercase font-semibold" style="margin-bottom:4px">${item.label}</div><div class="text-ink-900 font-medium text-sm">${item.value}</div></div>
+          </a>`;
+        }).join('');
+      }
+    } catch (err) {
+      console.warn('Contact widget render warning:', err);
     }
 
     // Scroll listener for sticky header background contrast
     window.addEventListener('scroll', () => {
-      const isMainVisible = !document.getElementById('view-main').classList.contains('hidden');
-      updateNavbarTheme(isMainVisible ? 'main' : 'sub');
+      try {
+        const mainView = document.getElementById('view-main');
+        const isMainVisible = mainView && !mainView.classList.contains('hidden');
+        updateNavbarTheme(isMainVisible ? 'main' : 'sub');
+      } catch (_) {}
     });
 
     // Initial check for viewport in-view elements on load
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
-        revealEls.forEach((el) => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight) el.classList.add('in-view');
-        });
+        try {
+          document.querySelectorAll('.reveal-up').forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) el.classList.add('in-view');
+          });
+        } catch (_) {}
       }, 300);
     });
   </script>
