@@ -1,0 +1,145 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#f5f7f2',
+          100: '#e8ede0',
+          200: '#d1dbc2',
+          300: '#b3c39d',
+          400: '#8fa66f',
+          500: '#6e8a4a',
+          600: '#556d37',
+          700: '#43522d',
+          800: '#364227',
+          900: '#2d3622',
+          950: '#1a1f12',
+        },
+        secondary: {
+          50: '#f8f6f0',
+          100: '#efe9d6',
+          200: '#dfd2ad',
+          300: '#ccb47d',
+          400: '#bb9a55',
+          500: '#a8853e',
+          600: '#8a6a33',
+          700: '#6c5129',
+          800: '#4d3a22',
+          900: '#332619',
+          950: '#1f1610',
+        },
+        accent: {
+          50: '#f0f4f8',
+          100: '#d9e3f0',
+          200: '#b3c7e1',
+          300: '#7d9fc9',
+          400: '#4779b3',
+          500: '#2a5e96',
+          600: '#1f4a7a',
+          700: '#1a3c63',
+          800: '#173052',
+          900: '#142843',
+          950: '#0c1828',
+        },
+        success: {
+          50: '#f0fdf4',
+          500: '#22c55e',
+          600: '#16a34a',
+          700: '#15803d',
+        },
+        warning: {
+          50: '#fffbeb',
+          500: '#f59e0b',
+          600: '#d97706',
+        },
+        error: {
+          50: '#fef2f2',
+          500: '#ef4444',
+          600: '#dc2626',
+        },
+        neutral: {
+          50: '#fafafa',
+          100: '#f4f4f5',
+          200: '#e4e4e7',
+          300: '#d4d4d8',
+          400: '#a1a1aa',
+          500: '#71717a',
+          600: '#52525b',
+          700: '#3f3f46',
+          800: '#27272a',
+          900: '#18181b',
+          950: '#09090b',
+        },
+      },
+      fontFamily: {
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 1s ease-out forwards',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float 10s ease-in-out infinite',
+        'spin-slow': 'spin 20s linear infinite',
+        'shimmer': 'shimmer 3s ease-in-out infinite',
+        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+        'scroll-down': 'scrollDown 2s ease-in-out infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeInDown: {
+          '0%': { opacity: '0', transform: 'translateY(-40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          '0%': { opacity: '0', transform: 'translateX(60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        shimmer: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(168,133,62,0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(168,133,62,0.6)' },
+        },
+        scrollDown: {
+          '0%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(12px)', opacity: '0' },
+        },
+      },
+      perspective: {
+        '1000': '1000px',
+        '2000': '2000px',
+      },
+      transformOrigin: {
+        'center-bottom': 'center bottom',
+      },
+      backgroundImage: {
+        'gold-gradient': 'linear-gradient(135deg, #bb9a55 0%, #a8853e 50%, #8a6a33 100%)',
+        'hero-overlay': 'linear-gradient(180deg, rgba(20,40,67,0.3) 0%, rgba(20,40,67,0.7) 100%)',
+      },
+    },
+  },
+  plugins: [],
+};

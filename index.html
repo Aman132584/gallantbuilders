@@ -9,83 +9,83 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== RESET ===== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #faf7f0; color: #1e1813; overflow-x: hidden; font-weight: 300; line-height: 1.6 }
-    ::selection { background: rgba(184, 133, 62, .25); color: #14110a }
-    a { color: inherit; text-decoration: none }
-    button { font-family: inherit; cursor: pointer; border: none; background: none }
-    img { display: block; max-width: 100% }
-    section { scroll-margin-top: 80px }
+    /* ===== RESET & CORE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #faf7f0; color: #1e1813; overflow-x: hidden; font-weight: 300; line-height: 1.6; }
+    ::selection { background: rgba(184, 133, 62, .25); color: #14110a; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { display: block; max-width: 100%; }
+    section { scroll-margin-top: 80px; }
 
-    /* ===== TYPOGRAPHY & UTILITIES ===== */
+    /* ===== TYPOGRAPHY & GRADIENTS ===== */
     .font-heading { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: 0.02em; }
-    .text-bronze-gradient { background: linear-gradient(135deg, #a77c3f, #cda368 50%, #7c5424); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent }
-    .max-w-7xl { max-width: 1280px }
-    .mx-auto { margin-left: auto; margin-right: auto }
-    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem }
-    .text-center { text-align: center }
-    .text-lg { font-size: 1.125rem }
-    .text-xl { font-size: 1.25rem }
-    .text-2xl { font-size: 1.5rem }
-    .text-3xl { font-size: 2.25rem }
-    .text-4xl { font-size: 2.85rem }
-    .text-sm { font-size: .875rem }
-    .text-xs { font-size: .75rem }
-    .font-bold { font-weight: 700 }
-    .font-semibold { font-weight: 600 }
-    .font-medium { font-weight: 500 }
-    .font-light { font-weight: 300 }
-    .italic { font-style: italic }
-    .uppercase { text-transform: uppercase }
-    .block { display: block }
-    .inline-block { display: inline-block }
-    .inline-flex { display: inline-flex }
-    .flex { display: flex }
-    .grid { display: grid }
-    .items-center { align-items: center }
-    .justify-between { justify-content: space-between }
-    .justify-center { justify-content: center }
-    .gap-2 { gap: .5rem }
-    .gap-4 { gap: 1rem }
-    .gap-6 { gap: 1.5rem }
-    .gap-8 { gap: 2rem }
-    .relative { position: relative }
-    .fixed { position: fixed }
-    .overflow-hidden { overflow: hidden }
-    .w-full { width: 100% }
-    .h-full { height: 100% }
-    .object-cover { object-fit: cover }
+    .text-bronze-gradient { background: linear-gradient(135deg, #a77c3f, #cda368 50%, #7c5424); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .max-w-7xl { max-width: 1280px; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .text-center { text-align: center; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 2.25rem; }
+    .text-4xl { font-size: 2.85rem; }
+    .text-sm { font-size: .875rem; }
+    .text-xs { font-size: .75rem; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .font-medium { font-weight: 500; }
+    .font-light { font-weight: 300; }
+    .italic { font-style: italic; }
+    .uppercase { text-transform: uppercase; }
+    .block { display: block; }
+    .inline-block { display: inline-block; }
+    .inline-flex { display: inline-flex; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .gap-2 { gap: .5rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .gap-8 { gap: 2rem; }
+    .relative { position: relative; }
+    .fixed { position: fixed; }
+    .overflow-hidden { overflow: hidden; }
+    .w-full { width: 100%; }
+    .h-full { height: 100%; }
+    .object-cover { object-fit: cover; }
     .hidden { display: none !important; }
 
-    /* ===== COLORS & CARDS ===== */
-    .text-ink-900 { color: #1f1a11 }
-    .text-ink-800 { color: #2e2719 }
-    .text-ink-600 { color: #54482f }
-    .text-ink-500 { color: #6b5d42 }
-    .text-bronze-300 { color: #cda368 }
-    .text-bronze-400 { color: #b8853e }
-    .text-bronze-600 { color: #7c5424 }
-    .text-cream-50 { color: #fefdfb }
+    /* ===== COLOR TOKENS ===== */
+    .text-ink-900 { color: #1f1a11; }
+    .text-ink-800 { color: #2e2719; }
+    .text-ink-600 { color: #54482f; }
+    .text-ink-500 { color: #6b5d42; }
+    .text-bronze-300 { color: #cda368; }
+    .text-bronze-400 { color: #b8853e; }
+    .text-bronze-600 { color: #7c5424; }
+    .text-cream-50 { color: #fefdfb; }
 
-    .card-depth { transition: transform .5s cubic-bezier(.22, 1, .36, 1), box-shadow .5s cubic-bezier(.22, 1, .36, 1), border-color .4s ease }
-    .card-depth:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30, 24, 19, .12); border-color: rgba(184,133,62,.5) }
-    .image-3d { box-shadow: 0 1px 3px rgba(20, 17, 10, .15), 0 10px 30px rgba(20, 17, 10, .12) }
+    /* ===== CARDS & BUTTONS ===== */
+    .card-depth { transition: transform .5s cubic-bezier(.22, 1, .36, 1), box-shadow .5s cubic-bezier(.22, 1, .36, 1), border-color .4s ease; }
+    .card-depth:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(30, 24, 19, .12); border-color: rgba(184,133,62,.5); }
+    .image-3d { box-shadow: 0 1px 3px rgba(20, 17, 10, .15), 0 10px 30px rgba(20, 17, 10, .12); }
 
     .btn-bronze { background: linear-gradient(135deg, #dfb576, #cda368 50%, #a27334); color: #14110a; font-weight: 600; transition: all .4s ease; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(184, 133, 62, .25); display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1; vertical-align: middle; }
-    .btn-bronze:hover { box-shadow: 0 6px 25px rgba(184, 133, 62, .4); transform: translateY(-2px) }
+    .btn-bronze:hover { box-shadow: 0 6px 25px rgba(184, 133, 62, .4); transform: translateY(-2px); }
     .btn-outline { border: 1.5px solid rgba(184, 133, 62, .45); color: #5e401b; font-weight: 600; transition: all .4s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1; vertical-align: middle; }
-    .btn-outline:hover { border-color: #b8853e; background: rgba(184, 133, 62, .12); color: #3d2810; transform: translateY(-2px) }
+    .btn-outline:hover { border-color: #b8853e; background: rgba(184, 133, 62, .12); color: #3d2810; transform: translateY(-2px); }
 
     .section-label { display: inline-flex; align-items: center; gap: 12px; font-family: 'Inter', sans-serif; letter-spacing: .25em; font-weight: 500; }
-    .section-label::before { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, #b8853e) }
-    .divider-bronze { height: 1px; background: linear-gradient(90deg, transparent, rgba(184, 133, 62, .3), transparent) }
-    .grid-overlay { background-image: linear-gradient(rgba(184, 133, 62, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(184, 133, 62, .03) 1px, transparent 1px); background-size: 80px 80px }
-    .dot-pattern { background-image: radial-gradient(rgba(184, 133, 62, .12) 1px, transparent 1px); background-size: 24px 24px }
+    .section-label::before { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, #b8853e); }
+    .grid-overlay { background-image: linear-gradient(rgba(184, 133, 62, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(184, 133, 62, .03) 1px, transparent 1px); background-size: 80px 80px; }
+    .dot-pattern { background-image: radial-gradient(rgba(184, 133, 62, .12) 1px, transparent 1px); background-size: 24px 24px; }
     .row-num-badge { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9999px; background: rgba(184, 133, 62, 0.15); color: #7c5424; font-weight: 600; font-size: 0.875rem; margin-right: 0.75rem; }
 
-    /* ===== PASSPORT-STYLE EQUAL MESSAGE SECTIONS ===== */
+    /* ===== PASSPORT MESSAGE CARDS ===== */
     .msg-layout-row {
       display: flex;
       flex-direction: column;
@@ -121,28 +121,23 @@
       object-position: center top;
       transition: transform .5s cubic-bezier(.22, 1, .36, 1);
     }
-    .msg-layout-row:hover .passport-photo-box img {
-      transform: scale(1.03);
-    }
+    .msg-layout-row:hover .passport-photo-box img { transform: scale(1.03); }
 
     @media(min-width: 850px) {
-      .msg-layout-row {
-        flex-direction: row;
-        align-items: flex-start;
-      }
+      .msg-layout-row { flex-direction: row; align-items: flex-start; }
     }
 
-    /* ===== LIGHT SOCIAL CHIP ===== */
+    /* ===== SOCIAL CHIPS & CONTACT WIDGETS ===== */
     .social-chip-light {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 9999px;
       background: #fefdfb;
       border: 1.5px solid rgba(184, 133, 62, 0.35);
       color: #2e2719;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 500;
       transition: all 0.4s cubic-bezier(.22, 1, .36, 1);
       box-shadow: 0 4px 15px rgba(30, 24, 19, 0.05);
@@ -155,9 +150,8 @@
       color: #5e401b;
     }
 
-    /* ===== INTERACTIVE CONTACT CARD STYLES ===== */
     .interactive-widget {
-      background:#fefdfb;border-radius:1rem;padding:1.5rem;border:1px solid rgba(184,133,62,.3);display:flex;align-items:flex-start;gap:1.25rem;box-shadow:0 8px 25px rgba(30,24,19,.03);transition:all 0.35s cubic-bezier(.22, 1, .36, 1);text-decoration:none;color:inherit;
+      background: #fefdfb; border-radius: 1rem; padding: 1.35rem 1.45rem; border: 1px solid rgba(184,133,62,.3); display: flex; align-items: flex-start; gap: 1.25rem; box-shadow: 0 8px 25px rgba(30,24,19,.03); transition: all 0.35s cubic-bezier(.22, 1, .36, 1); text-decoration: none; color: inherit; width: 100%; box-sizing: border-box;
     }
     .interactive-widget:hover {
       transform: translateY(-4px);
@@ -166,45 +160,28 @@
       background: #fffdf9;
     }
 
-    /* ===== SURFACE-EMBOSSED / FLOATING ANIMATED LOGO EMBLEM ===== */
+    #contact-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; width: 100%; }
+    @media (max-width: 980px) {
+      #contact-info { grid-template-columns: 1fr; max-width: 580px; margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 640px) {
+      #contact-info { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 0 auto; }
+      .interactive-widget { width: 56px; height: 56px; padding: 0; border-radius: 9999px; justify-content: center; align-items: center; box-shadow: 0 6px 20px rgba(184,133,62,.2); }
+      .interactive-widget > div:nth-child(2) { display: none !important; }
+      .interactive-widget > div:first-child { width: 100% !important; height: 100% !important; border-radius: 9999px !important; }
+    }
+
+    /* ===== EMBLEM & ANIMATIONS ===== */
     @keyframes subtleLogoFloatPulse {
-      0%, 100% {
-        transform: translateY(0px) scale(1);
-        filter: drop-shadow(0 12px 26px rgba(124, 84, 36, 0.18)) drop-shadow(0 -3px 10px rgba(254, 253, 251, 0.95));
-      }
-      50% {
-        transform: translateY(-6px) scale(1.03);
-        filter: drop-shadow(0 18px 36px rgba(124, 84, 36, 0.26)) drop-shadow(0 -5px 12px rgba(254, 253, 251, 1));
-      }
+      0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 12px 26px rgba(124, 84, 36, 0.18)) drop-shadow(0 -3px 10px rgba(254, 253, 251, 0.95)); }
+      50% { transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 18px 36px rgba(124, 84, 36, 0.26)) drop-shadow(0 -5px 12px rgba(254, 253, 251, 1)); }
     }
-
     .gallant-surface-emblem {
-      width: clamp(4.5rem, 14vw, 7.625rem);
-      height: clamp(4.5rem, 14vw, 7.625rem);
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #faf7f0;
-      box-shadow: inset 0 2px 6px rgba(184, 133, 62, 0.22), inset 0 -2px 6px rgba(254, 253, 251, 0.92), 8px 14px 34px rgba(30, 24, 19, 0.09), -8px -8px 24px rgba(254, 253, 251, 0.88);
-      border: 1.5px solid rgba(184, 133, 62, 0.28);
-      animation: subtleLogoFloatPulse 5s ease-in-out infinite;
+      width: clamp(4.5rem, 14vw, 7.625rem); height: clamp(4.5rem, 14vw, 7.625rem); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; background: #faf7f0; box-shadow: inset 0 2px 6px rgba(184, 133, 62, 0.22), inset 0 -2px 6px rgba(254, 253, 251, 0.92), 8px 14px 34px rgba(30, 24, 19, 0.09), -8px -8px 24px rgba(254, 253, 251, 0.88); border: 1.5px solid rgba(184, 133, 62, 0.28); animation: subtleLogoFloatPulse 5s ease-in-out infinite;
     }
+    .gallant-surface-emblem img { width: clamp(2.75rem, 8vw, 4.375rem); height: clamp(2.75rem, 8vw, 4.375rem); object-fit: contain; opacity: 0.92; transition: opacity 0.4s ease; }
+    .gallant-surface-emblem:hover img { opacity: 1; }
 
-    .gallant-surface-emblem img {
-      width: clamp(2.75rem, 8vw, 4.375rem);
-      height: clamp(2.75rem, 8vw, 4.375rem);
-      object-fit: contain;
-      opacity: 0.92;
-      transition: opacity 0.4s ease;
-    }
-
-    .gallant-surface-emblem:hover img {
-      opacity: 1;
-    }
-
-    /* ===== HERO ANIMATED TEXT LINES ===== */
     @keyframes heroFadeSlideUp {
       0% { opacity: 0; transform: translateY(28px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -212,71 +189,63 @@
     .hero-stagger-1 { opacity: 0; animation: heroFadeSlideUp 1.2s cubic-bezier(.22, 1, .36, 1) forwards; animation-delay: 0.1s; }
     .hero-stagger-2 { opacity: 0; animation: heroFadeSlideUp 1.2s cubic-bezier(.22, 1, .36, 1) forwards; animation-delay: 0.25s; }
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
     @keyframes heroZoom { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
-    @keyframes titlePulseSlide {
-      0% { opacity: 0; transform: translateY(24px) scale(0.97); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes shimmerSweep {
-      0% { background-position: -200% center }
-      100% { background-position: 200% center }
-    }
+    @keyframes titlePulseSlide { 0% { opacity: 0; transform: translateY(24px) scale(0.97); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes shimmerSweep { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
 
     .animated-page-title {
-      font-size: clamp(3.25rem, 6.5vw, 5.5rem);
-      line-height: 1.1;
-      letter-spacing: 0.03em;
-      background: linear-gradient(100deg, #7c5424, #c9a05f 30%, #e9d3a3 50%, #c9a05f 70%, #7c5424 100%);
-      background-size: 220% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: titlePulseSlide 1.1s cubic-bezier(.22, 1, .36, 1) forwards, shimmerSweep 6s linear infinite;
+      font-size: clamp(3.25rem, 6.5vw, 5.5rem); line-height: 1.1; letter-spacing: 0.03em; background: linear-gradient(100deg, #7c5424, #c9a05f 30%, #e9d3a3 50%, #c9a05f 70%, #7c5424 100%); background-size: 220% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: titlePulseSlide 1.1s cubic-bezier(.22, 1, .36, 1) forwards, shimmerSweep 6s linear infinite;
     }
 
-    .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.22, 1, .36, 1), transform .9s cubic-bezier(.22, 1, .36, 1); }
+    .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.22, 1, .36, 1), transform .9s cubic-bezier(.22, 1, .36, 1); will-change: transform, opacity; }
     .reveal-up.in-view { opacity: 1; transform: translateY(0); }
-    .anim-float-slow { animation: float 12s ease-in-out infinite }
-    .hero-zoom-animation { animation: heroZoom 25s ease-in-out infinite; }
+    .anim-float-slow { animation: float 12s ease-in-out infinite; }
+    .hero-zoom-animation { animation: heroZoom 25s ease-in-out infinite; will-change: transform; }
 
     @media(min-width:768px) {
-      .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr) }
-      .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr) }
-      .md\:grid-cols-4 { grid-template-columns: repeat(4, 1fr) }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .md\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
     }
     @media(min-width:1024px) {
-      .lg\:grid-cols-12 { grid-template-columns: repeat(12, 1fr) }
-      .lg\:col-span-6 { grid-column: span 6 }
-      .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr) }
+      .lg\:grid-cols-12 { grid-template-columns: repeat(12, 1fr); }
+      .lg\:col-span-6 { grid-column: span 6; }
+      .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
     }
 
     .icon { width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .icon-sm { width: 15px; height: 15px }
-    .icon-md { width: 18px; height: 18px }
-    .icon-lg { width: 22px; height: 22px }
+    .icon-sm { width: 15px; height: 15px; }
+    .icon-md { width: 18px; height: 18px; }
+    .icon-lg { width: 22px; height: 22px; }
 
-    /* ===== FLUID HEADING SCALE ===== */
-    .heading-xl { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.15; }
-    .heading-md { font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.25; }
+    .heading-xl { font-size: clamp(1.75rem, 3.8vw, 2.75rem); line-height: 1.2; letter-spacing: 0.02em; }
+    .heading-md { font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.25; }
     .heading-card { font-size: clamp(1.55rem, 2.8vw, 2.15rem); line-height: 1.25; }
 
-    /* ===== HERO BACKGROUND IMAGE ===== */
-    .hero-bg-img { object-position: center center; }
-
+    /* ===== HERO RESPONSIVE STYLES ===== */
+    .hero-bg-desktop { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .hero-bg-mobile { display: none; width: 100%; height: 100%; object-fit: cover; }
     @media (max-width: 640px) {
+      .hero-bg-desktop { display: none !important; }
+      .hero-bg-mobile { display: block !important; width: 100%; height: 100%; object-fit: cover; }
       .hero-bg-img.hero-zoom-animation { animation: heroZoomMobile 25s ease-in-out infinite; }
     }
     @keyframes heroZoomMobile { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-    /* ===== MISSING BASE UTILITIES ===== */
-    .text-base { font-size: 1rem }
-    .flex-wrap { flex-wrap: wrap }
-    .flex-col { flex-direction: column }
+    .hero-title-main { font-size: clamp(1.6rem, 5.6vw, 4.4rem); font-weight: 600; letter-spacing: 0.02em; }
+    .hero-title-desktop { display: inline; }
+    .hero-title-mobile-break { display: none; }
+    @media (max-width: 640px) {
+      .hero-title-desktop { display: inline; }
+      .hero-title-mobile-break { display: block; }
+    }
+
+    .text-base { font-size: 1rem; }
+    .flex-wrap { flex-wrap: wrap; }
+    .flex-col { flex-direction: column; }
     .flex-col.flex { display: flex; }
 
-    /* ===== RESPONSIVE TEXT-SIZE UTILITIES (sm: breakpoint, min-width 640px) ===== */
     @media (min-width: 640px) {
       .sm\:text-3xl { font-size: 2.25rem; }
       .sm\:text-4xl { font-size: clamp(2.5rem, 4vw, 3rem); }
@@ -285,140 +254,105 @@
       .sm\:flex-row { flex-direction: row; }
     }
 
-    /* ======================================================================
-       RESPONSIVE / MOBILE NAVIGATION
-       ====================================================================== */
+    /* ===== NAVIGATION ===== */
+    #navbar { pointer-events: auto; }
+    #nav-inner { position: relative; z-index: 210; }
 
     #nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 9999px;
-      background: rgba(255,255,255,0.08);
-      border: 1.5px solid rgba(205,163,104,0.35);
-      flex-shrink: 0;
-      color: #fefdfb;
-      transition: background .3s ease, transform .3s ease, color .3s ease;
-      -webkit-tap-highlight-color: transparent;
+      display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 9999px; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(205,163,104,0.45); flex-shrink: 0; color: #fefdfb; transition: background .3s ease, transform .3s ease, color .3s ease; -webkit-tap-highlight-color: transparent; cursor: pointer; position: relative; z-index: 250;
     }
-    #nav-toggle:hover { background: rgba(255,255,255,0.16); }
-    #nav-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; }
+    #nav-toggle:hover { background: rgba(255,255,255,0.22); }
+    #nav-toggle svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; }
     #nav-toggle .icon-close { display: none; }
     #nav-toggle.open .icon-menu { display: none; }
     #nav-toggle.open .icon-close { display: block; }
 
-    #nav-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(8,6,5,0.55);
-      z-index: 150;
-      opacity: 0;
-      transition: opacity .35s ease;
-    }
+    #nav-overlay { display: none; position: fixed; inset: 0; background: rgba(8,6,5,0.65); z-index: 180; opacity: 0; transition: opacity .35s ease; }
     #nav-overlay.open { display: block; opacity: 1; }
 
-    @media (max-width: 899px) {
+    @media (max-width: 1024px) {
       #nav-toggle { display: flex; }
-
       #nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: min(82vw, 320px);
-        height: 100vh;
-        height: 100dvh;
-        background: rgba(16,12,9,0.98);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: flex-start !important;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 6.5rem 2rem 2.5rem;
-        padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
-        padding-top: calc(6.5rem + env(safe-area-inset-top, 0px));
-        transition: right .4s cubic-bezier(.22,1,.36,1);
-        z-index: 200;
-        overflow-y: auto;
-        box-shadow: -10px 0 40px rgba(0,0,0,.35);
+        position: fixed; top: 0; right: 0; width: min(85vw, 320px); height: 100vh; height: 100dvh; background: rgba(16,12,9,0.985); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); flex-direction: column; align-items: flex-start !important; justify-content: flex-start; gap: 0; padding: 6.5rem 2rem 2.5rem; padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px)); padding-top: calc(6.5rem + env(safe-area-inset-bottom, 0px)); transform: translateX(105%); transition: transform .4s cubic-bezier(.22,1,.36,1); z-index: 200; overflow-y: auto; box-shadow: -15px 0 50px rgba(0,0,0,.5); pointer-events: none;
       }
-      #nav-links.open { right: 0; }
-      #nav-links > div {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 0.25rem !important;
-        width: 100%;
-        margin-right: 0 !important;
-      }
-      #nav-links a.nav-link-item {
-        width: 100%;
-        padding: 15px 4px !important;
-        font-size: 1.05rem !important;
-        color: #fefdfb !important;
-        text-shadow: none !important;
-        border-bottom: 1px solid rgba(205,163,104,0.15);
-      }
-      #nav-cta-btn {
-        width: 100%;
-        margin-top: 1.75rem;
-        text-align: center;
-      }
+      #nav-links.open { transform: translateX(0); pointer-events: auto; }
+      #nav-links > div { flex-direction: column !important; align-items: flex-start !important; gap: 0.25rem !important; width: 100%; margin-right: 0 !important; }
+      #nav-links a.nav-link-item { width: 100%; padding: 16px 8px !important; font-size: 1.05rem !important; color: #fefdfb !important; text-shadow: none !important; border-bottom: 1px solid rgba(205,163,104,0.18); cursor: pointer; display: block; }
+      #nav-cta-btn { width: 100%; margin-top: 1.75rem; text-align: center; display: flex; justify-content: center; }
       #nav-logo { gap: 0.65rem !important; }
     }
 
     @media (min-width: 641px) and (max-width: 1024px) {
       #home { padding-top: 9rem !important; padding-bottom: 6rem !important; }
       #about, #properties, #contact { padding-top: 6rem !important; padding-bottom: 6rem !important; }
-      #view-leadership > main, #view-detail-park > main, #view-detail-homes > main {
-        padding-top: 3rem !important; padding-bottom: 5rem !important;
-      }
+      #view-executive > main, #view-detail-park > main, #view-detail-homes > main { padding-top: 3rem !important; padding-bottom: 5rem !important; }
       .project-card { padding: 3.5rem 2rem !important; }
     }
 
     @media (max-width: 640px) {
       .px-6 { padding-left: 1.1rem; padding-right: 1.1rem; }
-
       #home { padding-top: 6.25rem !important; padding-bottom: 3rem !important; min-height: 78vh !important; min-height: 78dvh !important; }
       #about, #properties, #contact { padding-top: 4.25rem !important; padding-bottom: 4.25rem !important; }
-      #view-leadership > main, #view-detail-park > main, #view-detail-homes > main {
-        padding-top: 2.5rem !important; padding-bottom: 3.5rem !important;
-      }
-
+      #view-executive > main, #view-detail-park > main, #view-detail-homes > main { padding-top: 2.5rem !important; padding-bottom: 3.5rem !important; }
       .msg-layout-row { padding: 1.75rem 1.25rem; gap: 1.5rem; }
       .passport-photo-box { width: 100%; max-width: 230px; height: 260px; }
-
       .project-card { padding: 2.75rem 1.25rem !important; }
       .project-card h3 { font-size: clamp(2rem, 6vw, 2.3rem) !important; }
-
       .animated-page-title { font-size: clamp(2.1rem, 11vw, 3.25rem) !important; }
       .gallant-surface-emblem { margin-bottom: 1.25rem !important; }
-
-      #nav-logo > div:first-child { width: 46px !important; height: 46px !important; }
-      #nav-brand-title { font-size: 1rem !important; }
-
+      /* Mobile brand tight alignment fixes */
+      #nav-logo { gap: 0.45rem !important; }
+      #nav-logo > div:first-child { width: 36px !important; height: 36px !important; }
+      #nav-brand-title { font-size: 0.92rem !important; line-height: 1.05 !important; }
+      #nav-brand-sub { font-size: 7.5px !important; letter-spacing: 0.12em !important; margin-top: 1px !important; }
       .btn-bronze, .btn-outline { padding: 13px 24px !important; font-size: 0.85rem !important; }
-
       h1, h2, h3 { word-break: break-word; }
-
       .image-3d img { height: 280px !important; }
-
       .row-num-badge { width: 32px; height: 32px; font-size: 0.8rem; }
     }
 
     @media (max-width: 380px) {
       .passport-photo-box { max-width: 200px; height: 230px; }
+      #nav-logo { gap: 0.35rem !important; }
+      #nav-logo > div:first-child { width: 32px !important; height: 32px !important; }
+      #nav-brand-title { font-size: 0.86rem !important; }
+      #nav-brand-sub { font-size: 7px !important; }
+    }
+
+    /* ===== REFINED 3-COLUMN FOOTER SYSTEM ===== */
+    .footer-container { max-width: 1280px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.3fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: start;
+    }
+    .footer-bottom-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.25rem 2.5rem; }
+    }
+    @media (max-width: 640px) {
+      footer { padding: 4.5rem 0 2.5rem !important; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.25rem; margin-bottom: 3rem; text-align: center; }
+      .footer-brand-block { display: flex; flex-direction: column; align-items: center; }
+      .footer-bottom-flex { flex-direction: column; text-align: center; gap: 0.85rem; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ===== TRANSPARENT MERGED HERO NAVBAR ===== -->
+  <!-- ================= TRANSPARENT MERGED HERO NAVBAR ================= -->
   <nav id="navbar"
-    style="position:fixed;top:0;left:0;right:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid transparent;z-index:100;transition:all 0.45s cubic-bezier(0.22, 1, 0.36, 1);padding:1.15rem 0;">
+    style="position:fixed;top:0;left:0;right:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid transparent;z-index:300;transition:all 0.45s cubic-bezier(0.22, 1, 0.36, 1);padding:1.15rem 0;">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" id="nav-inner" style="transition:all 0.4s ease;">
       <a href="#home" onclick="navJump('home'); return false;" class="flex items-center gap-3.5" id="nav-logo" style="transition:transform 0.3s ease;"
         onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
@@ -435,14 +369,14 @@
       <div class="flex items-center gap-2 sm:gap-6 ml-auto" id="nav-links">
         <div class="flex items-center gap-2 sm:gap-5" style="margin-right:0.5rem;">
           <a href="#about" onclick="navJump('about'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">About</a>
-          <a href="#" onclick="switchView('leadership'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">Leadership</a>
+          <a href="#" onclick="switchView('executive'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">Executive Team</a>
           <a href="#properties" onclick="navJump('properties'); return false;" class="nav-link-item" style="padding:8px 16px;font-size:0.95rem;font-weight:500;color:#fefdfb;border-radius:9999px;text-shadow:0 2px 8px rgba(0,0,0,0.8);cursor:pointer;transition:color .3s;">Projects</a>
         </div>
         <a href="#contact" id="nav-cta-btn" onclick="navJump('contact'); return false;" class="btn-bronze" style="padding:10px 24px;border-radius:9999px;font-size:.9rem;letter-spacing:.025em;cursor:pointer;">contact us</a>
       </div>
 
       <!-- MOBILE / TABLET HAMBURGER TOGGLE -->
-      <button id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false">
+      <button id="nav-toggle" type="button" onclick="toggleMobileNav(event)" aria-label="Toggle navigation menu" aria-expanded="false">
         <svg class="icon-menu" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
@@ -458,8 +392,8 @@
     <section id="home"
       style="position:relative;padding:12.5rem 0 8.5rem;min-height:92vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#100c09;text-align:center">
       <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-        <img src="gate.jpeg" alt="Contemporary villa at dusk" class="hero-zoom-animation hero-bg-img"
-          style="width:100%;height:100%;object-fit:cover;will-change:transform;" />
+        <img src="gate.png" alt="Contemporary villa at dusk" class="hero-zoom-animation hero-bg-img hero-bg-desktop" />
+        <img src="hero.png" alt="Gallant Homes Gateway mobile view" class="hero-zoom-animation hero-bg-img hero-bg-mobile" />
         <div style="position:absolute;inset:0;background:linear-gradient(to top,#100c09 5%,rgba(16,12,9,.65) 45%,rgba(16,12,9,.45))"></div>
         <div style="position:absolute;inset:0;background:radial-gradient(circle at center,rgba(16,12,9,.35) 0%,rgba(16,12,9,.8) 100%)"></div>
       </div>
@@ -469,13 +403,14 @@
       </div>
 
       <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;flex-direction:column;align-items:center">
-        
         <h1 class="font-heading" style="color:#fefdfb;line-height:1.2;margin-bottom:2.25rem;text-shadow:0 4px 28px rgba(0,0,0,0.88);">
-          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.4rem,3.5vw,2.75rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
+          <span class="hero-stagger-1 block" style="color:#ffffff;font-size:clamp(1.4rem,3.5vw,2.75rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
             Welcome to
           </span>
-          <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.6rem,5.6vw,4.4rem);font-weight:600;letter-spacing:0.02em;">
-            Gallant Builders and Developers
+          <span class="hero-stagger-1 block text-bronze-gradient hero-title-main">
+            <span class="hero-title-desktop">Gallant Builders and</span>
+            <span class="hero-title-mobile-break"></span>
+            Developers
           </span>
           <span class="hero-stagger-1 block text-bronze-gradient" style="font-size:clamp(1.05rem,3.4vw,2.65rem);font-weight:600;letter-spacing:0.08em;margin-top:0.45rem;text-shadow:0 2px 14px rgba(205,163,104,0.45);">
             Pvt Ltd
@@ -499,7 +434,7 @@
       <div class="max-w-7xl mx-auto px-6 reveal-up">
         <div style="margin-bottom:4rem;text-align:center;">
           <span class="section-label text-xs uppercase font-semibold text-bronze-600 justify-center mb-3">Who We Are</span>
-          <h2 class="font-heading text-ink-900" style="font-size:clamp(2rem,4.5vw,4rem);line-height:1.2;">
+          <h2 class="font-heading text-ink-900 heading-xl">
             About <span class="italic text-bronze-gradient">Gallant Builders &amp; Developers</span>
           </h2>
         </div>
@@ -519,8 +454,8 @@
               Every master-planned enclave we engineer integrates LDA-compliant statutory clarity, sustainable green infrastructure, and lasting architectural legacy for generations to come.
             </p>
             <div style="margin-top:1rem">
-              <a href="#" onclick="switchView('leadership'); return false;" class="btn-outline" style="padding:12px 28px;border-radius:9999px;font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;color:#5e401b;border-color:rgba(184,133,62,.45);">
-                <span>Leadership</span>
+              <a href="#" onclick="switchView('executive'); return false;" class="btn-outline" style="padding:12px 28px;border-radius:9999px;font-size:.875rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;color:#5e401b;border-color:rgba(184,133,62,.45);">
+                <span>Executive Team</span>
                 <svg class="icon icon-sm"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
@@ -533,44 +468,24 @@
     <section id="properties" style="position:relative;padding:8rem 0;background:linear-gradient(135deg,#e8dfcc 0%,#f0e6d2 50%,#dfd4bc 100%);overflow:hidden">
       <div class="dot-pattern" style="position:absolute;inset:0;opacity:.25;pointer-events:none;"></div>
       <div class="max-w-7xl mx-auto px-6 reveal-up" style="position:relative;z-index:2;">
-        
         <div style="text-align:center;margin-bottom:4rem;">
           <h2 class="font-heading text-ink-900 heading-xl uppercase tracking-wider">Projects</h2>
         </div>
 
         <div style="display:flex;flex-direction:column;align-items:center;gap:2.5rem;max-width:860px;margin:0 auto;">
-          
           <!-- PARK AVENUE CARD -->
           <div class="reveal-up project-card" style="
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            width: 100%;
-            padding: 4.5rem 3rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #fefdfb;
-            border: 1.5px solid rgba(184, 133, 62, 0.35);
-            box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12);
-            transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
+            position: relative; overflow: hidden; border-radius: 1.5rem; width: 100%; padding: 4.5rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fefdfb; border: 1.5px solid rgba(184, 133, 62, 0.35); box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12); transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
           " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 28px 65px rgba(184, 133, 62, 0.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 20px 50px rgba(30, 24, 19, 0.12)'">
-            
             <div style="position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(205,163,104,0.18) 0%,transparent 70%);pointer-events:none;"></div>
-
             <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;margin-bottom:0.75rem;display:inline-block">Flagship Community</span>
-            
             <h3 class="font-heading text-ink-900" style="font-size:clamp(2.3rem, 5.2vw, 4.1rem);line-height:1.05;margin-bottom:0.5rem;color:#1f1a11;">
               PARK <span class="italic text-bronze-gradient">AVENUE</span>
             </h3>
             <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mb-6">Housing Society</span>
-            
             <p class="text-ink-600 font-light" style="max-width:580px;font-size:1.05rem;line-height:1.75;margin-bottom:2.25rem;">
               Master-planned residential plots, commercial storefront inventories, and serene community infrastructure by Gallant Builders &amp; Developers.
             </p>
-
             <button onclick="switchView('detail-park'); return false;" class="btn-bronze" style="padding:15px 36px;border-radius:9999px;font-size:.9rem;font-weight:600;">
               <span>View More</span>
               <svg class="icon icon-sm" style="color:#14110a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -579,43 +494,23 @@
 
           <!-- GALLANT HOMES CARD -->
           <div class="reveal-up project-card" style="
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            width: 100%;
-            padding: 4.5rem 3rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #fefdfb;
-            border: 1.5px solid rgba(184, 133, 62, 0.35);
-            box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12);
-            transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
+            position: relative; overflow: hidden; border-radius: 1.5rem; width: 100%; padding: 4.5rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fefdfb; border: 1.5px solid rgba(184, 133, 62, 0.35); box-shadow: 0 20px 50px rgba(30, 24, 19, 0.12); transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s cubic-bezier(.22, 1, .36, 1);
           " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 28px 65px rgba(184, 133, 62, 0.22)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 20px 50px rgba(30, 24, 19, 0.12)'">
-            
             <div style="position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(205,163,104,0.18) 0%,transparent 70%);pointer-events:none;"></div>
-
             <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;margin-bottom:0.75rem;display:inline-block">Signature Living</span>
-            
             <h3 class="font-heading text-ink-900" style="font-size:clamp(2.3rem, 5.2vw, 4.1rem);line-height:1.05;margin-bottom:0.5rem;color:#1f1a11;">
               GALLANT <span class="italic text-bronze-gradient">HOMES</span>
             </h3>
             <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mb-6">Residential Enclave</span>
-            
             <p class="text-ink-600 font-light" style="max-width:580px;font-size:1.05rem;line-height:1.75;margin-bottom:2.25rem;">
               Turnkey architectural luxury residences, contemporary interior layouts, and bespoke family sanctuaries built by Gallant Builders &amp; Developers.
             </p>
-
             <button onclick="switchView('detail-homes'); return false;" class="btn-bronze" style="padding:15px 36px;border-radius:9999px;font-size:.9rem;font-weight:600;">
               <span>View More</span>
               <svg class="icon icon-sm" style="color:#14110a"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
           </div>
-
         </div>
-
       </div>
     </section>
 
@@ -625,14 +520,14 @@
       <div class="max-w-7xl mx-auto px-6 reveal-up relative z-10">
         <div style="margin-bottom:4rem;max-width:672px">
           <span class="section-label text-xs uppercase font-semibold text-bronze-600" style="margin-bottom:1.5rem;display:block">Get in Touch</span>
-          <h2 class="font-heading text-ink-900" style="font-size:clamp(2.4rem,5.5vw,4.25rem);line-height:1.1;margin-bottom:1.5rem">Contact Us</h2>
+          <h2 class="font-heading text-ink-900 heading-xl">Contact Us</h2>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:3rem;">
-          <div style="background:#fefdfb;border-radius:1.5rem;padding:2.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 12px 35px rgba(30,24,19,.05);text-align:center;">
+          <div style="background:#fefdfb;border-radius:1.5rem;padding:clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.25rem, 2.5vw, 2rem);border:1.5px solid rgba(184,133,62,.35);box-shadow:0 12px 35px rgba(30,24,19,.05);text-align:center;">
             <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.5rem;">Official Social Presence</span>
-            <h4 class="font-heading text-ink-900 heading-md mb-6">Stay Connected With Gallant</h4>
-            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.25rem;">
+            <h4 class="font-heading text-ink-900 heading-md" style="margin-bottom: 2.25rem;">Stay Connected With Gallant</h4>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.25rem;padding:0 0.5rem;">
               <a href="https://www.facebook.com/profile.php?id=61576196166308" target="_blank" rel="noopener" class="social-chip-light">
                 <svg class="icon icon-md text-bronze-600" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                 <span>Facebook Page</span>
@@ -648,14 +543,14 @@
             </div>
           </div>
 
-          <div id="contact-info" class="grid md:grid-cols-3 gap-6"></div>
+          <div id="contact-info"></div>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- ================= SEPARATE DEDICATED LEADERSHIP PAGE ================= -->
-  <div id="view-leadership" class="hidden" style="padding-top:7rem;">
+  <!-- ================= SEPARATE DEDICATED EXECUTIVE TEAM PAGE ================= -->
+  <div id="view-executive" class="hidden" style="padding-top:7rem;">
     <main style="padding:4rem 0 7rem;">
       <div class="max-w-7xl mx-auto px-6" style="margin-bottom:2rem;">
         <button onclick="switchView('main'); return false;" class="inline-flex items-center gap-2 text-sm font-medium text-ink-600 hover:text-bronze-600">
@@ -670,12 +565,11 @@
             <img src="gallant-logo-hero.png" alt="Gallant Builders Emblem" />
           </div>
           <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.25em;display:block;margin-bottom:0.75rem;">Executive Board</span>
-          <h1 class="font-heading animated-page-title">Leadership</h1>
+          <h1 class="font-heading animated-page-title">Executive Team</h1>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:3rem;">
-
-          <!-- CHAIRMAN (Tanweer A Kazmi) -->
+          <!-- CHAIRMAN -->
           <div class="msg-layout-row reveal-up">
             <div class="passport-photo-box">
               <img src="chairman.jpeg" alt="Chairman Tanweer A Kazmi" />
@@ -695,7 +589,7 @@
             </div>
           </div>
 
-          <!-- CEO - AMJAD SANDHU -->
+          <!-- CEO -->
           <div class="msg-layout-row reveal-up">
             <div class="passport-photo-box">
               <img src="WhatsApp Image 2026-09-17 at 10.16.15 PM.jpeg" alt="CEO Amjad Sandhu" />
@@ -715,7 +609,7 @@
             </div>
           </div>
 
-          <!-- GENERAL MANAGER - ALI RAZA SANDHU -->
+          <!-- GENERAL MANAGER -->
           <div class="msg-layout-row reveal-up">
             <div class="passport-photo-box">
               <img src="GM.jpeg" alt="General Manager Ali Raza Sandhu" />
@@ -735,7 +629,7 @@
             </div>
           </div>
 
-          <!-- LEGAL TEAM ADVISOR HEAD (Raja Shehzad Changez) -->
+          <!-- LEGAL TEAM ADVISOR -->
           <div class="msg-layout-row reveal-up">
             <div class="passport-photo-box">
               <img src="WhatsApp Image 2026-09-17 at 10.38.18 PM.jpeg" alt="Legal Raja Shehzad Changez" />
@@ -755,10 +649,10 @@
             </div>
           </div>
 
-          <!-- IT DEPARTMENT HEAD (Muhaimin Azeem) -->
+          <!-- IT DEPARTMENT HEAD -->
           <div class="msg-layout-row reveal-up">
             <div class="passport-photo-box">
-              <img src="Aman Ahsan.png" alt="Aman  Ahsan" />
+              <img src="Aman Ahsan.png" alt="Aman Ahsan" />
             </div>
             <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
               <h3 class="font-heading text-ink-900 heading-card" style="margin-bottom:1.25rem;">IT Head</h3>
@@ -774,7 +668,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </main>
@@ -799,7 +692,7 @@
         <span class="text-xs uppercase font-medium tracking-[0.25em] text-ink-600 block mt-2">Housing Society</span>
       </div>
 
-      <!-- WHAT WE OFFER SECTION -->
+      <!-- WHAT WE OFFER -->
       <div class="max-w-7xl mx-auto px-6" style="margin-bottom:6rem;">
         <div style="margin-bottom:3.5rem;">
           <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.5rem;">Inventory Showcase</span>
@@ -937,7 +830,7 @@
         <div style="background:#fefdfb;border-radius:1.5rem;border:1.5px solid rgba(184,133,62,.35);box-shadow:0 18px 45px rgba(20,17,10,.08);padding:2.5rem 1.5rem;max-width:880px;margin-left:auto;margin-right:auto;">
           <div style="text-align:center;margin-bottom:1.75rem;">
             <span class="text-xs uppercase font-semibold text-bronze-600" style="letter-spacing:.2em;display:block;margin-bottom:0.4rem;">Master Layout</span>
-            <h2 class="font-heading text-ink-900 heading-md">Society Master Map</h2>
+            <h2 class="font-heading text-ink-900 heading-xl">Society Master Map</h2>
           </div>
           <div style="background:#faf7f0;border-radius:1rem;border:1px solid rgba(184,133,62,.3);padding:1rem;max-width:740px;margin:0 auto;box-shadow:inset 0 2px 10px rgba(30,24,19,.04);">
             <img src="map.PNG" alt="Park Avenue Society Master Map" style="width:100%;max-height:420px;object-fit:contain;border-radius:0.75rem;display:block;margin:0 auto;" />
@@ -995,47 +888,40 @@
     </main>
   </div>
 
-  <!-- 7. PERFECTLY DESIGNED PITCH BLACK LUXURY FOOTER -->
+  <!-- 7. LUXURY PITCH-BLACK FOOTER (CLEANED 3-COLUMN LAYOUT) -->
   <footer style="position:relative;background:#080605;color:#fefdfb;padding:6rem 0 3rem;border-top:1px solid rgba(184,133,62,.25);">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10" style="margin-bottom:4rem;">
-        <div>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Bio -->
+        <div class="footer-brand-block">
           <div class="flex items-center gap-3.5" style="margin-bottom:1.25rem;">
             <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
               <img src="gallant-logo-hero.png" alt="Gallant Builders Logo" style="max-height:100%;width:auto;" />
             </div>
             <div>
               <div class="text-base font-bold font-heading text-cream-50" style="line-height:1.1">Gallant</div>
-              <div class="text-xs uppercase font-medium" style="letter-spacing:.2em;color:#cda368">Builders & Developers</div>
+              <div class="text-xs uppercase font-medium" style="letter-spacing:.2em;color:#cda368">Builders &amp; Developers</div>
             </div>
           </div>
-          <p class="text-sm font-light" style="color:rgba(254,253,251,0.65);line-height:1.7;">
+          <p class="text-sm font-light" style="color:rgba(254,253,251,0.65);line-height:1.7;max-width:320px;">
             Crafting architectural legacy and master-planned communities with unshakeable engineering standards.
           </p>
         </div>
 
+        <!-- Col 2: Quick Links -->
         <div>
-          <h4 class="font-heading text-bronze-300 text-lg uppercase tracking-wider mb-4">Quick Navigation</h4>
+          <h4 class="font-heading text-bronze-300 text-base uppercase tracking-wider mb-4">Quick Navigation</h4>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;font-size:0.875rem;color:rgba(254,253,251,0.75);">
             <li><a href="#about" onclick="navJump('about'); return false;" style="transition:color .3s">About</a></li>
-            <li><a href="#" onclick="switchView('leadership'); return false;" style="transition:color .3s">Leadership</a></li>
+            <li><a href="#" onclick="switchView('executive'); return false;" style="transition:color .3s">Executive Team</a></li>
             <li><a href="#properties" onclick="navJump('properties'); return false;" style="transition:color .3s">Projects</a></li>
-            <li><a href="#contact" onclick="navJump('contact'); return false;" style="transition:color .3s">contact us</a></li>
+            <li><a href="#contact" onclick="navJump('contact'); return false;" style="transition:color .3s">Contact Us</a></li>
           </ul>
         </div>
 
+        <!-- Col 3: Direct Desk -->
         <div>
-          <h4 class="font-heading text-bronze-300 text-lg uppercase tracking-wider mb-4">Flagship Project</h4>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;font-size:0.875rem;color:rgba(254,253,251,0.75);">
-            <li><a href="#properties" onclick="switchView('detail-park'); return false;" style="transition:color .3s">Park Avenue Housing Society</a></li>
-            <li><a href="#properties" onclick="switchView('detail-homes'); return false;" style="transition:color .3s">Gallant Homes Enclave</a></li>
-            <li><a href="#properties" onclick="switchView('detail-park'); return false;" style="transition:color .3s">Residential &amp; Commercial Schedules</a></li>
-            <li><a href="#properties" onclick="switchView('detail-park'); return false;" style="transition:color .3s">LDA Approved Master Plan</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-heading text-bronze-300 text-lg uppercase tracking-wider mb-4">Direct Desk</h4>
+          <h4 class="font-heading text-bronze-300 text-base uppercase tracking-wider mb-4">Direct Desk</h4>
           <a href="https://maps.app.goo.gl/KgKkXiqoJku7epsv5?g_st=aw" target="_blank" rel="noopener" class="text-sm font-light block mb-2" style="color:rgba(254,253,251,0.65);line-height:1.7;text-decoration:none;">
             Main Kot Araian - Jia Bagga Rd, Lahore, 55151
           </a>
@@ -1046,9 +932,9 @@
 
       <div style="height:1px;background:rgba(184,133,62,.2);margin-bottom:2rem;"></div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style="color:rgba(254,253,251,0.45);">
-        <div>© 2026 Gallant Builders & Developers. All rights reserved.</div>
-        <div class="flex gap-6">
+      <div class="footer-bottom-flex text-xs" style="color:rgba(254,253,251,0.45);">
+        <div>© 2026 Gallant Builders &amp; Developers. All rights reserved.</div>
+        <div class="flex gap-6 justify-center">
           <span>LDA Compliant</span>
           <span>Verified Land Titles</span>
         </div>
@@ -1056,22 +942,23 @@
     </div>
   </footer>
 
+  <!-- ================= HUMANIZED APPLICATION LOGIC ================= -->
   <script>
-    var icons = {
+    // Lightweight SVG icon registry
+    const appIcons = {
       mapPin: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>',
       mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>',
       phone: '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>'
     };
 
-    function svg(name, cls) { return '<svg class="icon ' + (cls || 'icon-md') + '">' + (icons[name] || '') + '</svg>'; }
-
+    // Navbar adaptation based on current view/scroll state
     function updateNavbarTheme(activeView) {
-      var nav = document.getElementById('navbar');
-      var brandTitle = document.getElementById('nav-brand-title');
-      var brandSub = document.getElementById('nav-brand-sub');
-      var linkItems = document.querySelectorAll('.nav-link-item');
-      var ctaBtn = document.getElementById('nav-cta-btn');
-      var toggleBtn = document.getElementById('nav-toggle');
+      const nav = document.getElementById('navbar');
+      const brandTitle = document.getElementById('nav-brand-title');
+      const brandSub = document.getElementById('nav-brand-sub');
+      const linkItems = document.querySelectorAll('.nav-link-item');
+      const ctaBtn = document.getElementById('nav-cta-btn');
+      const toggleBtn = document.getElementById('nav-toggle');
 
       if (activeView !== 'main') {
         nav.style.background = 'rgba(255, 255, 255, 0.94)';
@@ -1082,15 +969,19 @@
         brandTitle.style.textShadow = 'none';
         brandSub.style.color = '#7c5424';
         brandSub.style.textShadow = 'none';
-        linkItems.forEach(function(l) {
-          if (window.innerWidth > 899) {
+        linkItems.forEach((l) => {
+          if (window.innerWidth > 1024) {
             l.style.color = '#2e2719';
             l.style.textShadow = 'none';
           }
         });
         ctaBtn.style.background = 'linear-gradient(135deg, #dfb576, #cda368 50%, #a27334)';
         ctaBtn.style.color = '#14110a';
-        if (toggleBtn) toggleBtn.style.color = '#1f1a11';
+        if (toggleBtn) {
+          toggleBtn.style.color = '#1f1a11';
+          toggleBtn.style.borderColor = 'rgba(31,26,17,0.3)';
+          toggleBtn.style.background = 'rgba(31,26,17,0.06)';
+        }
       } else {
         if (window.scrollY > 40) {
           nav.style.background = 'rgba(35,28,21,0.95)';
@@ -1099,7 +990,7 @@
           nav.style.borderBottom = '1px solid rgba(205,163,104,0.4)';
           brandTitle.style.color = '#fefdfb';
           brandSub.style.color = '#cda368';
-          linkItems.forEach(function(l) { if (window.innerWidth > 899) l.style.color = '#fefdfb'; });
+          linkItems.forEach((l) => { if (window.innerWidth > 1024) l.style.color = '#fefdfb'; });
         } else {
           nav.style.background = 'transparent';
           nav.style.backdropFilter = 'none';
@@ -1107,22 +998,27 @@
           nav.style.borderBottom = '1px solid transparent';
           brandTitle.style.color = '#fefdfb';
           brandSub.style.color = '#cda368';
-          linkItems.forEach(function(l) { if (window.innerWidth > 899) l.style.color = '#fefdfb'; });
+          linkItems.forEach((l) => { if (window.innerWidth > 1024) l.style.color = '#fefdfb'; });
         }
-        if (toggleBtn) toggleBtn.style.color = '#fefdfb';
+        if (toggleBtn) {
+          toggleBtn.style.color = '#fefdfb';
+          toggleBtn.style.borderColor = 'rgba(205,163,104,0.45)';
+          toggleBtn.style.background = 'rgba(255,255,255,0.12)';
+        }
       }
     }
 
+    // Single-page router switcher
     function switchView(viewName) {
-      var views = ['view-main', 'view-leadership', 'view-detail-park', 'view-detail-homes'];
-      views.forEach(function(id) {
-        var el = document.getElementById(id);
+      const views = ['view-main', 'view-executive', 'view-detail-park', 'view-detail-homes'];
+      views.forEach((id) => {
+        const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
       });
 
-      var activeEl = document.getElementById(
+      const activeEl = document.getElementById(
         viewName === 'main' ? 'view-main' :
-        viewName === 'leadership' ? 'view-leadership' :
+        viewName === 'executive' ? 'view-executive' :
         viewName === 'detail-homes' ? 'view-detail-homes' : 'view-detail-park'
       );
       if (activeEl) {
@@ -1131,12 +1027,19 @@
         updateNavbarTheme(viewName === 'main' ? 'main' : 'sub');
       }
       closeMobileNav();
+      setTimeout(() => {
+        document.querySelectorAll('.reveal-up:not(.in-view)').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) el.classList.add('in-view');
+        });
+      }, 100);
     }
 
+    // Direct scroll anchor navigation
     function navJump(targetId) {
       switchView('main');
-      setTimeout(function() {
-        var targetEl = document.getElementById(targetId);
+      setTimeout(() => {
+        const targetEl = document.getElementById(targetId);
         if (targetEl) {
           targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -1144,12 +1047,17 @@
       closeMobileNav();
     }
 
-    function toggleMobileNav() {
-      var nav = document.getElementById('nav-links');
-      var toggle = document.getElementById('nav-toggle');
-      var overlay = document.getElementById('nav-overlay');
+    // Mobile slide-over navigation handlers
+    function toggleMobileNav(e) {
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      const nav = document.getElementById('nav-links');
+      const toggle = document.getElementById('nav-toggle');
+      const overlay = document.getElementById('nav-overlay');
       if (!nav || !toggle) return;
-      var isOpen = nav.classList.toggle('open');
+      const isOpen = nav.classList.toggle('open');
       toggle.classList.toggle('open', isOpen);
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (overlay) overlay.classList.toggle('open', isOpen);
@@ -1157,9 +1065,9 @@
     }
 
     function closeMobileNav() {
-      var nav = document.getElementById('nav-links');
-      var toggle = document.getElementById('nav-toggle');
-      var overlay = document.getElementById('nav-overlay');
+      const nav = document.getElementById('nav-links');
+      const toggle = document.getElementById('nav-toggle');
+      const overlay = document.getElementById('nav-overlay');
       if (!nav || !nav.classList.contains('open')) return;
       nav.classList.remove('open');
       if (toggle) {
@@ -1170,41 +1078,55 @@
       document.body.style.overflow = '';
     }
 
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 899) closeMobileNav();
+    // Window resize observer for responsive safety
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024) closeMobileNav();
     });
 
-    var revealEls = document.querySelectorAll('.reveal-up, .reveal-stagger');
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
+    // Reveal on scroll observer
+    const revealEls = document.querySelectorAll('.reveal-up');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach((el) => revealObserver.observe(el));
 
-    var contactWidgets = [
+    // Render interactive contact widgets
+    const contactWidgets = [
       { type: 'link', href: 'https://maps.app.goo.gl/KgKkXiqoJku7epsv5?g_st=aw', target: '_blank', icon: 'mapPin', label: 'Office Address', value: 'Main Kot Araian - Jia Bagga Rd, Lahore, 55151' },
       { type: 'link', href: 'https://wa.me/923039853967', target: '_blank', icon: 'phone', label: 'WhatsApp', value: '0303 9853967' },
       { type: 'link', href: 'mailto:gallantbuildersdevelopers@gmail.com', target: '_self', icon: 'mail', label: 'Corporate Email', value: 'gallantbuildersdevelopers@gmail.com' }
     ];
-    var ciEl = document.getElementById('contact-info');
+    const ciEl = document.getElementById('contact-info');
     if (ciEl) {
-      ciEl.innerHTML = contactWidgets.map(function (item) {
-        return '<a href="' + item.href + '" target="' + item.target + '" rel="' + (item.target === '_blank' ? 'noopener' : '') + '" class="interactive-widget">' +
-          '<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#cda368,#b8853e);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
-          '<svg class="icon icon-lg" style="color:#100c09">' + icons[item.icon] + '</svg>' +
-          '</div>' +
-          '<div><div class="text-xs text-ink-500 uppercase font-semibold" style="margin-bottom:4px">' + item.label + '</div><div class="text-ink-900 font-medium text-sm">' + item.value + '</div></div>' +
-          '</a>';
+      ciEl.innerHTML = contactWidgets.map((item) => {
+        return `<a href="${item.href}" target="${item.target}" rel="${item.target === '_blank' ? 'noopener' : ''}" class="interactive-widget" title="${item.label} — ${item.value}">
+          <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#cda368,#b8853e);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg class="icon icon-lg" style="color:#100c09">${appIcons[item.icon]}</svg>
+          </div>
+          <div><div class="text-xs text-ink-500 uppercase font-semibold" style="margin-bottom:4px">${item.label}</div><div class="text-ink-900 font-medium text-sm">${item.value}</div></div>
+        </a>`;
       }).join('');
     }
 
-    window.addEventListener('scroll', function () {
-      var isMainVisible = !document.getElementById('view-main').classList.contains('hidden');
+    // Scroll listener for sticky header background contrast
+    window.addEventListener('scroll', () => {
+      const isMainVisible = !document.getElementById('view-main').classList.contains('hidden');
       updateNavbarTheme(isMainVisible ? 'main' : 'sub');
+    });
+
+    // Initial check for viewport in-view elements on load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        revealEls.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) el.classList.add('in-view');
+        });
+      }, 300);
     });
   </script>
 </body>
