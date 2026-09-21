@@ -241,6 +241,17 @@
       .hero-title-mobile-break { display: block; }
     }
 
+    /* ===== HERO LOAD GATE WRAPPER ===== */
+    .hero-content-gate {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.75s cubic-bezier(.22, 1, .36, 1), transform 0.75s cubic-bezier(.22, 1, .36, 1);
+    }
+    .hero-content-gate.loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .text-base { font-size: 1rem; }
     .flex-wrap { flex-wrap: wrap; }
     .flex-col { flex-direction: column; }
@@ -401,7 +412,7 @@
         style="position:absolute;top:30%;right:35px;width:384px;height:384px;border-radius:50%;background:rgba(184,133,62,.15);filter:blur(120px);z-index:1">
       </div>
 
-      <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;flex-direction:column;align-items:center">
+      <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 1.5rem;width:100%;display:flex;flex-direction:column;align-items:center" class="hero-content-gate" id="heroGate">
         <h1 class="font-heading" style="color:#fefdfb;line-height:1.2;margin-bottom:2.25rem;text-shadow:0 4px 28px rgba(0,0,0,0.88);">
           <span class="hero-stagger-1 block" style="color:#ffffff;font-size:clamp(1.65rem,4.5vw,2.85rem);font-weight:600;letter-spacing:0.04em;margin-bottom:0.25rem;">
             Welcome to
@@ -951,6 +962,39 @@
       }
     }, true);
 
+    // Hero gate loader: Wait for hero image completion before revealing text block completely
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const heroGate = document.getElementById('heroGate');
+        if (!heroGate) return;
+
+        const isMobile = window.innerWidth <= 640;
+        const targetImg = document.querySelector(isMobile ? '.hero-bg-mobile' : '.hero-bg-desktop') || document.querySelector('.hero-bg-img');
+
+        let revealed = false;
+        function revealHero() {
+          if (revealed) return;
+          revealed = true;
+          heroGate.classList.add('loaded');
+        }
+
+        if (targetImg) {
+          if (targetImg.complete && targetImg.naturalHeight !== 0) {
+            revealHero();
+          } else {
+            targetImg.onload = revealHero;
+            targetImg.onerror = revealHero;
+          }
+        }
+        // Safety fallback timer (2.5 seconds max wait)
+        setTimeout(revealHero, 2500);
+      } catch (err) {
+        console.warn('Hero gate warning:', err);
+        const fallbackGate = document.getElementById('heroGate');
+        if (fallbackGate) fallbackGate.classList.add('loaded');
+      }
+    });
+
     // Lightweight SVG icon registry
     const appIcons = {
       mapPin: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>',
@@ -1133,11 +1177,17 @@
       const contactWidgets = [
         { type: 'link', href: 'https://maps.app.goo.gl/KgKkXiqoJku7epsv5?g_st=aw', target: '_blank', icon: 'mapPin', label: 'Office Address', value: 'Main Kot Araian - Jia Bagga Rd, Lahore, 55151' },
         { type: 'link', href: 'https://wa.me/923039853967', target: '_blank', icon: 'phone', label: 'WhatsApp', value: '0303 9853967' },
+        { type: 'mailto:gallantbuildersdevelopers@gmail.com', href: 'mailto:gallantbuildersdevelopers@gmail.com', target: '_self', icon: 'mail', label: 'Corporate Email', value: 'gallantbuildersdevelopers@gmail.com' }
+      ];
+      // Fixed href for mailto item:
+      const correctedContactWidgets = [
+        { type: 'link', href: 'https://maps.app.goo.gl/KgKkXiqoJku7epsv5?g_st=aw', target: '_blank', icon: 'mapPin', label: 'Office Address', value: 'Main Kot Araian - Jia Bagga Rd, Lahore, 55151' },
+        { type: 'link', href: 'https://wa.me/923039853967', target: '_blank', icon: 'phone', label: 'WhatsApp', value: '0303 9853967' },
         { type: 'link', href: 'mailto:gallantbuildersdevelopers@gmail.com', target: '_self', icon: 'mail', label: 'Corporate Email', value: 'gallantbuildersdevelopers@gmail.com' }
       ];
       const ciEl = document.getElementById('contact-info');
       if (ciEl) {
-        ciEl.innerHTML = contactWidgets.map((item) => {
+        ciEl.innerHTML = correctedContactWidgets.map((item) => {
           return `<a href="${item.href}" target="${item.target}" rel="${item.target === '_blank' ? 'noopener' : ''}" class="interactive-widget" title="${item.label} — ${item.value}">
             <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#cda368,#b8853e);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <svg class="icon icon-lg" style="color:#100c09">${appIcons[item.icon] || ''}</svg>
